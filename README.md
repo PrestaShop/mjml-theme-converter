@@ -1,2 +1,4 @@
-# mjml-theme-converter
-Tool used to convert a PrestaShop mail theme from MJML to twig
+mjml-theme-converter
+====================
+
+A Symfony project created on March 20, 2019, 6:54 pm.
