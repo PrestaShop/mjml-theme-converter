@@ -44,39 +44,47 @@ class ConvertMJMLThemeCommand extends Command
     /** @var TwigTemplateConverter */
     private $converter;
 
-    public function __construct(TwigTemplateConverter $converter)
+    /** @var string */
+    private $mjmlMailThemesDir;
+
+    /**
+     * @param TwigTemplateConverter $converter
+     * @param string $mjmlMailThemesDir
+     */
+    public function __construct(TwigTemplateConverter $converter, $mjmlMailThemesDir)
     {
         parent::__construct(self::$defaultName);
         $this->converter = $converter;
+        $this->mjmlMailThemesDir = $mjmlMailThemesDir;
     }
 
     protected function configure()
     {
         $this
             ->setDescription('Convert an MJML theme to a twig theme')
-            ->addArgument('mjmlThemePath', InputArgument::REQUIRED, 'MJML theme path to convert.')
+            ->addArgument('mjmlTheme', InputArgument::REQUIRED, 'MJML theme to convert.')
             ->addArgument('twigThemePath', InputArgument::REQUIRED, 'Target twig theme path where files are converted.')
         ;
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $mjmlThemePath = $input->getArgument('mjmlThemePath');
+        $mjmlTheme = $input->getArgument('mjmlTheme');
         $twigThemePath = $input->getArgument('twigThemePath');
 
-        if (!is_dir($mjmlThemePath)) {
-            throw new FileNotFoundException(sprintf('Could not find mjml theme folder %s', $mjmlThemePath));
+        $mjmlThemeFolder = $this->mjmlMailThemesDir.'/'.$mjmlTheme;
+        if (!is_dir($mjmlThemeFolder)) {
+            throw new FileNotFoundException(sprintf('Could not find mjml theme folder %s', $mjmlThemeFolder));
         }
         if (!is_dir($twigThemePath)) {
             throw new FileNotFoundException(sprintf('Could not find twig theme folder %s', $twigThemePath));
         }
-
-        $mjmlTheme = basename($mjmlThemePath);
+        $twigThemePath = realpath($twigThemePath);
         $twigTheme = basename($twigThemePath);
 
         $fileSystem = new Filesystem();
         $finder = new Finder();
-        $finder->files()->name('*.mjml.twig')->in($mjmlThemePath);
+        $finder->files()->name('*.mjml.twig')->in($mjmlThemeFolder);
         /** @var SplFileInfo $mjmlFile */
         foreach ($finder as $mjmlFile) {
             //Ignore components file for now

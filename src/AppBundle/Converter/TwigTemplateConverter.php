@@ -32,7 +32,6 @@ use AppBundle\Mjml\MjmlConverter;
 use Symfony\Bundle\TwigBundle\TwigEngine;
 use Symfony\Component\DomCrawler\Crawler;
 use Symfony\Component\Filesystem\Filesystem;
-use Symfony\Component\Templating\EngineInterface;
 
 class TwigTemplateConverter
 {
@@ -52,12 +51,12 @@ class TwigTemplateConverter
     private $templateContent;
 
     /**
-     * @param EngineInterface $engine
+     * @param TwigEngine $engine
      * @param MjmlConverter $mjmlConverter
      * @param string $tempDir
      */
     public function __construct(
-        EngineInterface $engine,
+        TwigEngine $engine,
         MjmlConverter $mjmlConverter,
         $tempDir = ''
     ) {
@@ -94,7 +93,7 @@ class TwigTemplateConverter
 
         //Add EOL and indentation for clarity
         $twigLayout = preg_replace('/{% block (.*?) %}/', "\n                  {% block \\1 %}\n", $twigLayout);
-        $twigLayout = preg_replace('/{% include (.*?) %}/', "                      {% include \\1 %}\n", $twigLayout);
+        $twigLayout = preg_replace('/{% include \'@MjmlMailThemes(.*?) %}/', "                      {% include '@MailThemes\\1 %}\n", $twigLayout);
         $twigLayout = preg_replace('/{% endblock %}/', "                  {% endblock %}\n", $twigLayout);
 
         //Transform back title block
@@ -119,7 +118,7 @@ class TwigTemplateConverter
 
         $this->templateContent = file_get_contents($mjmlTemplatePath);
         $templateName = basename($mjmlTemplatePath);
-        $this->templateContent = "{% extends '@MailThemes/".$mjmlTheme."/components/layout.mjml.twig' %}
+        $this->templateContent = "{% extends '@MjmlMailThemes/".$mjmlTheme."/components/layout.mjml.twig' %}
 
 {% block content %}
 $this->templateContent
@@ -253,7 +252,7 @@ $layoutStyles
      */
     private function getLayoutTheme($layoutPath)
     {
-        preg_match('#@MailThemes/(.*?)/#', $layoutPath, $matches);
+        preg_match('#@MjmlMailThemes/(.*?)/#', $layoutPath, $matches);
         if (count($matches)) {
             return $matches[1];
         }
@@ -283,7 +282,7 @@ $layoutStyles
     private function convertTwigLayoutPath($layoutPath, $newTheme)
     {
         $mjmlTheme = $this->getLayoutTheme($layoutPath);
-        $twigLayoutPath = preg_replace('#@MailThemes/'.$mjmlTheme.'/#', '@MailThemes/'.$newTheme.'/', $layoutPath);
+        $twigLayoutPath = preg_replace('#@MjmlMailThemes/'.$mjmlTheme.'/#', '@MailThemes/'.$newTheme.'/', $layoutPath);
         $twigLayoutPath = preg_replace('#mjml.twig#', 'html.twig', $twigLayoutPath);
 
         return $twigLayoutPath;

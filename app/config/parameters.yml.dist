@@ -17,3 +17,5 @@ parameters:
 
     # A secret key that's used to generate certain security-related tokens
     secret: ThisTokenIsNotSoSecretChangeIt
+
+    mjml_mail_themes_dir: "%kernel.project_dir%/mails/themes"

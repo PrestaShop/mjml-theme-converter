@@ -36,6 +36,8 @@ framework:
 twig:
     debug: '%kernel.debug%'
     strict_variables: '%kernel.debug%'
+    paths:
+        '%mjml_mail_themes_dir%': MjmlMailThemes
 
 # Doctrine Configuration
 doctrine:
