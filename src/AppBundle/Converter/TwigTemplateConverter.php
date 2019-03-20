@@ -26,8 +26,9 @@
 
 namespace AppBundle\Converter;
 
-use PrestaShop\PrestaShop\Core\Exception\FileNotFoundException;
-use PrestaShop\PrestaShop\Core\MailTemplate\Mjml\MjmlConverter;
+use AppBundle\Exception\FileNotFoundException;
+use AppBundle\Exception\InvalidArgumentException;
+use AppBundle\Mjml\MjmlConverter;
 use Symfony\Bundle\TwigBundle\TwigEngine;
 use Symfony\Component\DomCrawler\Crawler;
 use Symfony\Component\Filesystem\Filesystem;
@@ -35,7 +36,7 @@ use Symfony\Component\Templating\EngineInterface;
 
 class TwigTemplateConverter
 {
-    /** @var EngineInterface */
+    /** @var TwigEngine */
     private $engine;
 
     /** @var MjmlConverter */
@@ -51,15 +52,18 @@ class TwigTemplateConverter
     private $templateContent;
 
     /**
-     * @param TwigEngine $engine
+     * @param EngineInterface $engine
      * @param MjmlConverter $mjmlConverter
      * @param string $tempDir
      */
     public function __construct(
-        TwigEngine $engine,
+        EngineInterface $engine,
         MjmlConverter $mjmlConverter,
         $tempDir = ''
     ) {
+        if (!$engine instanceof TwigEngine) {
+            throw new InvalidArgumentException('The required engine must be a TwigEngine');
+        }
         $this->engine = $engine;
         $this->mjmlConverter = $mjmlConverter;
         $this->tempDir = empty($tempDir) ? sys_get_temp_dir() . '/mjml_twig_converter' : $tempDir;
@@ -284,5 +288,4 @@ $layoutStyles
 
         return $twigLayoutPath;
     }
-
 }

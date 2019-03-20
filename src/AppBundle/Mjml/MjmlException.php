@@ -24,8 +24,27 @@
  * International Registered Trademark & Property of PrestaShop SA
  */
 
-namespace AppBundle\Exception;
+namespace AppBundle\Mjml;
 
-class NotFoundException extends ConverterException
+use AppBundle\Exception\ConverterException;
+use Throwable;
+
+class MjmlException extends ConverterException
 {
+    /** @var string */
+    private $mjmlMessage;
+
+    public function __construct($message = "", $mjmlMessage = "", $code = 0, Throwable $previous = null)
+    {
+        parent::__construct($message, $code, $previous);
+        $this->mjmlMessage = $mjmlMessage;
+    }
+
+    /**
+     * @return string
+     */
+    public function getMjmlMessage()
+    {
+        return $this->mjmlMessage;
+    }
 }

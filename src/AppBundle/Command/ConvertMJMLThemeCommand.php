@@ -26,16 +26,29 @@
 
 namespace AppBundle\Command;
 
-use AppBundle\Exception\NotFoundException;
+use AppBundle\Converter\TwigTemplateConverter;
+use AppBundle\Exception\FileNotFoundException;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\Filesystem\Filesystem;
+use Symfony\Component\Finder\Finder;
+use Symfony\Component\Finder\SplFileInfo;
 
 class ConvertMJMLThemeCommand extends Command
 {
     /** @var string */
     protected static $defaultName = 'prestashop:mail:convert-mjml';
+
+    /** @var TwigTemplateConverter */
+    private $converter;
+
+    public function __construct(TwigTemplateConverter $converter)
+    {
+        parent::__construct(self::$defaultName);
+        $this->converter = $converter;
+    }
 
     protected function configure()
     {
@@ -48,39 +61,39 @@ class ConvertMJMLThemeCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $mjmlThemePath = $input->getArgument('mjmlTheme');
-        $twigThemePath = $input->getArgument('twigTheme');
+        $mjmlThemePath = $input->getArgument('mjmlThemePath');
+        $twigThemePath = $input->getArgument('twigThemePath');
 
         if (!is_dir($mjmlThemePath)) {
-            throw new NotFoundException(sprintf('Could not find mjml theme folder %s', $mjmlThemePath));
+            throw new FileNotFoundException(sprintf('Could not find mjml theme folder %s', $mjmlThemePath));
         }
         if (!is_dir($twigThemePath)) {
-            throw new NotFoundException(sprintf('Could not find twig theme folder %s', $twigThemePath));
+            throw new FileNotFoundException(sprintf('Could not find twig theme folder %s', $twigThemePath));
         }
 
-        /** @var TwigTemplateConverter $converter */
-        $converter = $this->getContainer()->get('prestashop.adapter.mail_template.mjml.twig_template_converter');
+        $mjmlTheme = basename($mjmlThemePath);
+        $twigTheme = basename($twigThemePath);
 
         $fileSystem = new Filesystem();
         $finder = new Finder();
-        $finder->files()->name('*.mjml.twig')->in($mjmlThemeFolder);
+        $finder->files()->name('*.mjml.twig')->in($mjmlThemePath);
         /** @var SplFileInfo $mjmlFile */
         foreach ($finder as $mjmlFile) {
             //Ignore components file for now
             if (preg_match('/^components/', $mjmlFile->getRelativePathname())) {
                 if ('components/layout.mjml.twig' == $mjmlFile->getRelativePathname()) {
                     $output->writeln('Converting layout '.$mjmlFile->getRelativePathname());
-                    $twigTemplate = $converter->convertLayoutTemplate($mjmlFile->getRealPath(), $mjmlTheme, $twigTheme);
+                    $twigTemplate = $this->converter->convertLayoutTemplate($mjmlFile->getRealPath(), $mjmlTheme, $twigTheme);
                 } else {
                     $output->writeln('Converting component '.$mjmlFile->getRelativePathname());
-                    $twigTemplate = $converter->convertComponentTemplate($mjmlFile->getRealPath(), $mjmlTheme);
+                    $twigTemplate = $this->converter->convertComponentTemplate($mjmlFile->getRealPath(), $mjmlTheme);
                 }
             } else {
                 $output->writeln('Converting template '.$mjmlFile->getRelativePathname());
-                $twigTemplate = $converter->convertChildTemplate($mjmlFile->getRealPath(), $twigTheme);
+                $twigTemplate = $this->converter->convertChildTemplate($mjmlFile->getRealPath(), $twigTheme);
             }
 
-            $twigTemplatePath = $mailThemesDir.'/'.$twigTheme.'/'.$mjmlFile->getRelativePathname();
+            $twigTemplatePath = $twigThemePath.'/'.$mjmlFile->getRelativePathname();
             $twigTemplatePath = preg_replace('/mjml\.twig/', 'html.twig', $twigTemplatePath);
             $twigTemplateFolder = dirname($twigTemplatePath);
             if (!$fileSystem->exists($twigTemplateFolder)) {
