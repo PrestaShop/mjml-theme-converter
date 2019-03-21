@@ -10,7 +10,7 @@
       <!-- TITLE BEGINING -->
     </mj-raw>
     <mj-text padding-top="0" padding-bottom="20px" font-weight="600" font-size="20px">
-      Hi {firstname} {lastname},
+      {{ 'Hi {firstname} {lastname},'|trans({}, 'EmailsBody', locale) }}
     </mj-text>
     <mj-raw>
       <!-- TITLE ENDING -->
@@ -48,7 +48,7 @@
 <mj-section padding="0 25px">
   <mj-column padding="0">
     <mj-text padding-bottom="0px" padding-top="0px" font-size="16px" font-weight="600">
-      Your login details on {shop_name}
+      {{ 'Your login details on {shop_name}'|trans({}, 'EmailsBody', locale)|raw }}
     </mj-text>
   </mj-column>
 </mj-section>
@@ -63,10 +63,10 @@
 <mj-section padding="15px 50px 40px">
   <mj-column background-color="#fefefe" border="1px solid #DFDFDF" padding="20px 0">
     <mj-text>
-      Here are your login details:
+      {{ 'Here are your login details:'|trans({}, 'EmailsBody', locale)|raw }}
     </mj-text>
     <mj-text padding-top="0px">
-      <span class="label">E-mail address&nbsp;:</span>&nbsp;<span style="color:#25B9D7;font-weight:600">{email}</span>
+      <span class="label">{{ 'E-mail address :'|trans({}, 'EmailsBody', locale)|raw }}</span>&nbsp;<span style="color:#25B9D7;font-weight:600">{email}</span>
     </mj-text>
   </mj-column>
 </mj-section>
@@ -80,7 +80,7 @@
 <mj-section padding="0 25px">
   <mj-column padding="0">
     <mj-text padding-bottom="0px" padding-top="0px" font-size="16px" font-weight="600">
-      Important Security Tips:
+      {{ 'Important Security Tips:'|trans({}, 'EmailsBody', locale) }}
     </mj-text>
   </mj-column>
 </mj-section>
@@ -94,17 +94,16 @@
 <mj-section padding="15px 50px 40px">
   <mj-column background-color="#fefefe" padding-top="10px" padding-bottom="10px" border="1px solid #DFDFDF">
     <mj-text>
-      <span class="label" style="font-size:16px">1.</span>&nbsp;<span>Always keep your account details safe.</span>
+      <span class="label" style="font-size:16px">1.</span>&nbsp;<span>{{ 'Always keep your account details safe.'|trans({}, 'EmailsBody', locale)|raw }}</span>
     </mj-text>
     <mj-text padding-top="0px">
-      <span class="label" style="font-size:16px">2.</span>&nbsp;<span>Never disclose your login details to anyone.</span>
+      <span class="label" style="font-size:16px">2.</span>&nbsp;<span>{{ 'Never disclose your login details to anyone.'|trans({}, 'EmailsBody', locale)|raw }}</span>
     </mj-text>
     <mj-text padding-top="0px">
-      <span class="label" style="font-size:16px">3.</span>&nbsp;<span>Change your password regularly.</span>
+      <span class="label" style="font-size:16px">3.</span>&nbsp;<span>{{ 'Change your password regularly.'|trans({}, 'EmailsBody', locale)|raw }}</span>
     </mj-text>
     <mj-text padding-top="0px">
-      <span class="label" style="font-size:16px">4.</span>&nbsp;<span> Should you suspect someone is using your account illegally, please
-notify us immediately.</span>
+      <span class="label" style="font-size:16px">4.</span>&nbsp;<span>{{ 'Should you suspect someone is using your account illegally, please notify us immediately.'|trans({}, 'EmailsBody', locale)|raw }}</span>
     </mj-text>
   </mj-column>
 </mj-section>
@@ -118,7 +117,7 @@ notify us immediately.</span>
 <mj-section padding="0 25px 20px">
   <mj-column>
     <mj-text align="center">
-      You can now place orders on our shop: <a href="[{shop_url}]" target="_blank" style="text-decoration:none;color:#25B9D7; display:block">{shop name}</a>
+      {{ 'You can now place orders on our shop:'|trans({}, 'EmailsBody', locale)|raw }} <a href="{shop_url}" target="_blank" style="text-decoration:none;color:#25B9D7; display:block">{shop name}</a>
     </mj-text>
   </mj-column>
 </mj-section>

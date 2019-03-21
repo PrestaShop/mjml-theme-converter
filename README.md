@@ -9,5 +9,7 @@ mail themes.
 To convert a theme use this command:
 
 ```
-./bin/console prestashop:mail:convert-mjml mjml_theme {twig_theme_path}
+./bin/console prestashop:mail:convert-mjml modern_mjml {twig_theme_path}
 ```
+
+The `modern_mjml` theme is located in this project in the `mails/themes` folder.

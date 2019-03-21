@@ -215,6 +215,10 @@ $layoutStyles
         $innerHtml = preg_replace('/{% endblock %}/', "\n{% endblock %}\n\n", $innerHtml);
         $innerHtml = trim($innerHtml)."\n";
 
+        //Link href and img src are wrongly escaped
+        $innerHtml = preg_replace('/href="%7B(.*?)%7D"/', 'href="{\1}"', $innerHtml);
+        $innerHtml = preg_replace('/src="%7B(.*?)%7D"/', 'src="{\1}"', $innerHtml);
+
         //Each converted template has its own style rules, so we need to extract them as well
         $crawler = new Crawler($convertedTemplate);
         /** @var Crawler $stylesCrawler */
