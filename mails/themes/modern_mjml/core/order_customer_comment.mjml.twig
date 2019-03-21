@@ -1,0 +1,95 @@
+{% extends '@MjmlMailThemes/modern_mjml/components/layout.mjml.twig' %}
+
+{% block title %}{{ 'Order customer comment'|trans({}, 'EmailsBody', locale) }}{% endblock %}
+
+{% block content %}
+<mj-section padding="0 25px">
+  <mj-column padding="0">
+
+    <mj-raw>
+      <!-- TITLE BEGINING -->
+    </mj-raw>
+    <mj-text padding-top="0" padding-bottom="20px" font-weight="600" font-size="20px">
+      {{ 'Hi {firstname} {lastname},'|trans({}, 'EmailsBody', locale) }}
+    </mj-text>
+    <mj-raw>
+      <!-- TITLE ENDING -->
+    </mj-raw>
+
+  </mj-column>
+</mj-section>
+
+<mj-raw>
+  <!-- BORDER BEGINING -->
+</mj-raw>
+<mj-section text-align="left" padding="0 50px 40px">
+  <mj-column width="25px">
+    <mj-divider width="25px" css-class="left" padding-top="0" padding-left="0" padding-right="0" border-width="3px" border-color="#505050" border-style="solid"></mj-divider>
+
+  </mj-column>
+</mj-section>
+<mj-raw>
+  <!-- BORDER ENDING -->
+</mj-raw>
+
+<mj-raw>
+  <!-- SUBTITLE BEGINING -->
+</mj-raw>
+<mj-section padding="0 25px 0">
+  <mj-column padding="0">
+    <mj-text padding-bottom="0px" padding-top="0px" font-weight="600" font-size="16px">
+      {{ 'Message from customer'|trans({}, 'EmailsBody', locale)|raw }}
+    </mj-text>
+  </mj-column>
+</mj-section>
+<mj-raw>
+  <!-- SUBTITLE ENDING -->
+</mj-raw>
+
+<mj-raw>
+  <!-- MESSAGE BOX BEGINING -->
+</mj-raw>
+<mj-section padding="15px 50px 40px">
+  <mj-column background-color="#fefefe" border="1px solid #DFDFDF" padding="20px 0">
+    <mj-text>
+      {{ 'You have received a new message regarding order with the reference'|trans({}, 'EmailsBody', locale)|raw }} <span class="label">{order_name}</span>.
+    </mj-text>
+    <mj-text>
+      <span style=" font-size:16px" class="label">{{ 'Customer :'|trans({}, 'EmailsBody', locale)|raw }}</span>
+      {firstrname} {lastname} ({email})
+    </mj-text>
+
+  </mj-column>
+</mj-section>
+<mj-raw>
+  <!-- MESSAGE BOX ENDING -->
+</mj-raw>
+
+<mj-raw>
+  <!-- SUBTITLE BEGINING -->
+</mj-raw>
+<mj-section padding="0 50px 0" text-align="left">
+  <mj-column padding="0">
+    <mj-text padding="0" font-weight="600" font-size="16px">
+      {{ 'Customer message :'|trans({}, 'EmailsBody', locale)|raw }}
+    </mj-text>
+  </mj-column>
+</mj-section>
+<mj-raw>
+  <!-- SUBTITLE ENDING -->
+</mj-raw>
+<mj-raw>
+  <!-- BOX BEGINING -->
+</mj-raw>
+<mj-section padding="15px 50px 40px">
+  <mj-column background-color="#f3f3f3" padding-top="10px" padding-bottom="10px">
+    <mj-text font-size="16px">
+      {message}
+    </mj-text>
+
+  </mj-column>
+</mj-section>
+<mj-raw>
+  <!-- BOX ENDING -->
+</mj-raw>
+{% endblock %}
