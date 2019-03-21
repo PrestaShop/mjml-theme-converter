@@ -1,6 +1,6 @@
 {% extends '@MjmlMailThemes/modern_mjml/components/layout.mjml.twig' %}
 
-{% block title %}{{ 'Backoffice Order'|trans({}, 'EmailsBody', locale) }}{% endblock %}
+{% block title %}{{ 'Credit Slip'|trans({}, 'EmailsBody', locale) }}{% endblock %}
 
 {% block content %}
 <mj-section padding="0 25px">
@@ -22,11 +22,10 @@
 <mj-raw>
     <!-- BORDER BEGINING -->
 </mj-raw>
-<mj-section text-align="left" padding="0 25px 20px">
+<mj-section text-align="left" padding="0 50px 40px">
     <mj-column width="25px">
-        <mj-text padding-top="0px">
-            <p style="border-bottom:3px solid #505050;width:25px;border-radius:6px; margin: 0"></p>
-        </mj-text>
+        <mj-divider width="25px" css-class="left" padding-top="0" padding-left="0" padding-right="0" border-width="3px" border-color="#505050"  border-style="solid"></mj-divider>
+
     </mj-column>
 </mj-section>
 <mj-raw>
@@ -34,17 +33,17 @@
 </mj-raw>
 
 <mj-raw>
-    <!-- ORDER BEGINING -->
+    <!-- SUBTITLE BEGINING -->
 </mj-raw>
 <mj-section padding="0 25px 0">
     <mj-column padding="0">
         <mj-text padding-bottom="0px" padding-top="0px" font-size="16px" font-weight="600">
-            {{ 'A new order has been generated on your behalf.'|trans({}, 'EmailsBody', locale)|raw }}
+            {{ 'Order ID {order_name}'|trans({}, 'EmailsBody', locale) }} - {{ 'Credit slip'|trans({}, 'EmailsBody', locale)|raw }}
         </mj-text>
     </mj-column>
 </mj-section>
 <mj-raw>
-    <!-- ORDER ENDING -->
+    <!-- SUBTITLE ENDING -->
 </mj-raw>
 
 <mj-raw>
@@ -53,11 +52,25 @@
 <mj-section padding="15px 50px 40px">
     <mj-column background-color="#fefefe" border="1px solid #DFDFDF" padding="20px 0">
         <mj-text>
-            {{ 'Please go on <a href="{order_link}">{order_link}</a> to complete the payment.'|trans({}, 'EmailsBody', locale)|raw }}
+            {{ 'A credit slip has been generated in your name for order with the reference <span class="label">{order_name}</span>.'|trans({}, 'EmailsBody', locale)|raw }}
         </mj-text>
     </mj-column>
 </mj-section>
 <mj-raw>
     <!-- BOX ENDING -->
+</mj-raw>
+
+<mj-raw>
+    <!-- FIRST TEXT BEGINING -->
+</mj-raw>
+<mj-section padding="0 25px 30px">
+    <mj-column>
+        <mj-text>
+            {{ 'Review this credit slip and download your invoice on our shop, go to the <a href="{history_url}" target="_blank">Credit slips</a> section of your customer account.'|trans({}, 'EmailsBody', locale)|raw }}
+        </mj-text>
+    </mj-column>
+</mj-section>
+<mj-raw>
+    <!-- FIRST TEXT ENDING -->
 </mj-raw>
 {% endblock %}

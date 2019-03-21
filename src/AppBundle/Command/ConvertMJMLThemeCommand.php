@@ -84,21 +84,25 @@ class ConvertMJMLThemeCommand extends Command
 
         $fileSystem = new Filesystem();
         $finder = new Finder();
-        $finder->files()->name('*.mjml.twig')->in($mjmlThemeFolder);
+        $finder->files()->sort(function ($a, $b) {
+            return $b->getMTime() - $a->getMTime();
+        })->name('*.mjml.twig')->in($mjmlThemeFolder);
+
         /** @var SplFileInfo $mjmlFile */
         foreach ($finder as $mjmlFile) {
             //Ignore components file for now
             if (preg_match('/^components/', $mjmlFile->getRelativePathname())) {
-                if ('components/layout.mjml.twig' == $mjmlFile->getRelativePathname()) {
+                if ('components/layout.mjml.twig' == $mjmlFile->getRelativePathname() ||
+                    'components/order_layout.mjml.twig' == $mjmlFile->getRelativePathname()) {
                     $output->writeln('Converting layout '.$mjmlFile->getRelativePathname());
                     $twigTemplate = $this->converter->convertLayoutTemplate($mjmlFile->getRealPath(), $mjmlTheme, $twigTheme);
                 } else {
                     $output->writeln('Converting component '.$mjmlFile->getRelativePathname());
-                    $twigTemplate = $this->converter->convertComponentTemplate($mjmlFile->getRealPath(), $mjmlTheme);
+                    $twigTemplate = $this->converter->convertComponentTemplate($mjmlFile->getRealPath(), $mjmlTheme, $twigTheme);
                 }
             } else {
                 $output->writeln('Converting template '.$mjmlFile->getRelativePathname());
-                $twigTemplate = $this->converter->convertChildTemplate($mjmlFile->getRealPath(), $twigTheme);
+                $twigTemplate = $this->converter->convertChildTemplate($mjmlFile->getRealPath(), $mjmlTheme, $twigTheme);
             }
 
             $twigTemplatePath = $twigThemePath.'/'.$mjmlFile->getRelativePathname();
@@ -109,6 +113,22 @@ class ConvertMJMLThemeCommand extends Command
             }
 
             file_put_contents($twigTemplatePath, $twigTemplate);
+        }
+
+        $output->writeln('Copying assets');
+        $assetsFolder = $mjmlThemeFolder.'/assets';
+        $twigAssetsFolder = $twigThemePath.'/assets';
+        if (!$fileSystem->exists($twigAssetsFolder)) {
+            $fileSystem->mkdir($twigAssetsFolder);
+        }
+
+        $finder = new Finder();
+        $finder->files()->in($assetsFolder);
+        /** @var SplFileInfo $assetFile */
+        foreach ($finder as $assetFile) {
+            $twigAssetPath = $twigAssetsFolder.'/'.$assetFile->getRelativePathname();
+            $output->writeln('Copying asset '.$twigAssetPath);
+            $fileSystem->copy($assetFile->getRealPath(), $twigAssetPath);
         }
     }
 }

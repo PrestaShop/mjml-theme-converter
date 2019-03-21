@@ -1,0 +1,49 @@
+{% extends '@MjmlMailThemes/modern_mjml/components/layout.mjml.twig' %}
+
+{% block title %}{{ 'Newsletter'|trans({}, 'EmailsBody', locale) }}{% endblock %}
+
+{% block content %}
+<mj-section padding="0 25px">
+  <mj-column padding="0">
+
+    <mj-raw>
+      <!-- TITLE BEGINING -->
+    </mj-raw>
+    <mj-text padding-top="0" padding-bottom="20px" font-weight="600" font-size="20px">
+      {{ 'Hi {firstname} {lastname},'|trans({}, 'EmailsBody', locale) }}
+    </mj-text>
+    <mj-raw>
+      <!-- TITLE ENDING -->
+    </mj-raw>
+  </mj-column>
+</mj-section>
+
+<mj-raw>
+  <!-- BORDER BEGINING -->
+</mj-raw>
+<mj-section text-align="left" padding="0 50px 40px">
+  <mj-column width="25px">
+    <mj-divider width="25px" css-class="left" padding-top="0" padding-left="0" padding-right="0" border-width="3px" border-color="#505050" border-style="solid"></mj-divider>
+
+  </mj-column>
+</mj-section>
+<mj-raw>
+  <!-- BORDER ENDING -->
+</mj-raw>
+
+<mj-raw>
+  <!-- BOX BEGINING -->
+</mj-raw>
+<mj-section padding="15px 50px 40px">
+  <mj-column background-color="#f3f3f3" padding-top="10px" padding-bottom="10px">
+    <mj-text font-size="16px">
+      {message}
+    </mj-text>
+
+  </mj-column>
+</mj-section>
+<mj-raw>
+  <!-- BOX ENDING -->
+</mj-raw>
+{% endblock %}
+

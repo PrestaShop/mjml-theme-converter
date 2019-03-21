@@ -1,0 +1,383 @@
+{% extends '@MjmlMailThemes/modern_mjml/components/order_layout.mjml.twig' %}
+
+{% block title %}{{ 'Order confirmation'|trans({}, 'EmailsBody', locale) }}{% endblock %}
+
+{% block content %}
+<mj-section padding="0 25px">
+  <mj-column padding="0">
+
+    <mj-raw>
+      <!-- TITLE BEGINING -->
+    </mj-raw>
+    <mj-text padding-top="0" padding-bottom="20px" font-weight="600" font-size="20px">
+      {{ 'Hi {firstname} {lastname},'|trans({}, 'EmailsBody', locale) }}
+    </mj-text>
+    <mj-raw>
+      <!-- TITLE ENDING -->
+    </mj-raw>
+
+    <mj-raw>
+      <!-- H2 TITLE BEGINING -->
+    </mj-raw>
+    <mj-text padding-bottom="25px" padding-top="0px" font-size="16px">
+      {{ 'Thank you for shopping on <span class="label">{shop_name}</span>!'|trans({}, 'EmailsBody', locale)|raw }}
+    </mj-text>
+    <mj-raw>
+      <!-- H2 TITLE ENDING -->
+    </mj-raw>
+
+  </mj-column>
+</mj-section>
+
+<mj-raw>
+  <!-- BORDER BEGINING -->
+</mj-raw>
+<mj-section text-align="left" padding="0 50px 40px">
+  <mj-column width="25px">
+    <mj-divider css-class="left" width="25px" padding-top="0" padding-left="0" padding-right="0" border-width="3px" border-color="#505050" border-style="solid"></mj-divider>
+
+  </mj-column>
+</mj-section>
+<mj-raw>
+  <!-- BORDER ENDING -->
+</mj-raw>
+
+<mj-raw>
+  <!-- SUBTITLE BEGINING -->
+</mj-raw>
+<mj-section padding="0 25px 0">
+  <mj-column padding="0">
+    <mj-text padding-bottom="0px" padding-top="0px" font-weight="600" font-size="16px">
+      {{ 'Order details'|trans({}, 'EmailsBody', locale)|raw }}
+    </mj-text>
+  </mj-column>
+</mj-section>
+<mj-raw>
+  <!-- SUBTITLE ENDING -->
+</mj-raw>
+
+<mj-raw>
+  <!-- BOX BEGINING -->
+</mj-raw>
+<mj-section padding="15px 50px 40px">
+  <mj-column background-color="#fefefe" border="1px solid #DFDFDF" padding-top="10px" padding-bottom="10px">
+    <mj-text font-size="16px">
+      <span class="label">{{ 'Order :'|trans({}, 'EmailsBody', locale)|raw }}</span> {order_name} {{ 'Placed on'|trans({}, 'EmailsBody', locale)|raw }} {date}
+    </mj-text>
+    <mj-text padding-top="0" font-size="16px">
+      <span class="label">{{ 'Payment :'|trans({}, 'EmailsBody', locale)|raw }}</span> {payment}
+    </mj-text>
+  </mj-column>
+</mj-section>
+<mj-raw>
+  <!-- BOX ENDING -->
+</mj-raw>
+
+<mj-raw>
+  <!-- TABLE BEGINING -->
+</mj-raw>
+<mj-section>
+  <mj-column>
+    <mj-table width="100%" padding-left="50px" padding-right="50px">
+      <tr>
+        <th bgcolor="#FDFDFD" class="table-header">{{ 'Reference'|trans({}, 'EmailsBody', locale)|raw }}</th>
+        <th bgcolor="#FDFDFD" class="table-header">{{ 'Product'|trans({}, 'EmailsBody', locale)|raw }}</th>
+        <th bgcolor="#FDFDFD" class="table-header">{{ 'Unit price'|trans({}, 'EmailsBody', locale)|raw }}</th>
+        <th bgcolor="#FDFDFD" class="table-header">{{ 'Quantity'|trans({}, 'EmailsBody', locale)|raw }}</th>
+        <th bgcolor="#FDFDFD" class="table-header">{{ 'Total price'|trans({}, 'EmailsBody', locale)|raw }}</th>
+      </tr>
+      <tr>
+        <td colspan="5" style="border: 1px solid #DFDFDF;text-align:center;padding:10px 0">
+          <mj-raw>
+            <html-only>{products}</html-only> <span data-text-only="1">{products_txt}</span>
+          </mj-raw>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="5" style="border: 1px solid #DFDFDF;text-align:center;padding:10px 0">
+          {discounts}
+        </td>
+      </tr>
+      <tr class="conf_body">
+        <td bgcolor="#FDFDFD" colspan="3" style="border: 1px solid #DFDFDF;background-color: #FDFDFD;padding:10px 0">
+          <table class="table" style="width:100%;border-collapse:collapse">
+            <tr>
+              <td width="10" style="padding:0">&nbsp;</td>
+              <td align="right" class="table-header">
+
+                {{ 'Products'|trans({}, 'EmailsBody', locale)|raw }}
+
+              </td>
+              <td width="10" style="padding:0">&nbsp;</td>
+            </tr>
+          </table>
+        </td>
+        <td bgcolor="#FDFDFD" align="right" colspan="3" style="border: 1px solid #DFDFDF;background-color: #FDFDFD;padding:10px 0">
+          <table class="table" style="width:100%;border-collapse:collapse">
+            <tr>
+              <td width="10" style="padding:0">&nbsp;</td>
+              <td align="right" style="padding:0;font-size:14px;font-family:Open sans,Arial,sans-serif">
+
+                {total_products}
+
+              </td>
+              <td width="10" style="padding:0">&nbsp;</td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr class="conf_body">
+        <td bgcolor="#FDFDFD" colspan="3" style="border: 1px solid #DFDFDF;background-color: #FDFDFD;padding:10px 0">
+          <table class="table" style="width:100%;border-collapse:collapse">
+            <tr>
+              <td width="10" style="padding:0">&nbsp;</td>
+              <td align="right" class="table-header">
+
+                {{ 'Discounts'|trans({}, 'EmailsBody', locale)|raw }}
+
+              </td>
+              <td width="10" style="padding:0">&nbsp;</td>
+            </tr>
+          </table>
+        </td>
+        <td bgcolor="#FDFDFD" colspan="3" style="border: 1px solid #DFDFDF;background-color: #FDFDFD;padding:10px 0">
+          <table class="table" style="width:100%;border-collapse:collapse">
+            <tr>
+              <td width="10" style="padding:0">&nbsp;</td>
+              <td align="right" style="padding:0;font-size:14px;font-family:Open sans,Arial,sans-serif">
+
+                {total_discounts}
+
+              </td>
+              <td width="10" style="padding:0">&nbsp;</td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr class="conf_body">
+        <td bgcolor="#FDFDFD" colspan="3" style="border: 1px solid #DFDFDF;background-color: #FDFDFD;padding:10px 0">
+          <table class="table" style="width:100%;border-collapse:collapse">
+            <tr>
+              <td width="10" style="padding:0">&nbsp;</td>
+              <td align="right" class="table-header">
+
+                {{ 'Gift-wrapping'|trans({}, 'EmailsBody', locale)|raw }}
+
+              </td>
+              <td width="10" style="padding:0">&nbsp;</td>
+            </tr>
+          </table>
+        </td>
+        <td bgcolor="#FDFDFD" colspan="3" style="border: 1px solid #DFDFDF;background-color: #FDFDFD;padding:10px 0">
+          <table class="table" style="width:100%;border-collapse:collapse">
+            <tr>
+              <td width="10" style="padding:0">&nbsp;</td>
+              <td align="right" style="padding:0;font-size:14px;font-family:Open sans,Arial,sans-serif">
+
+                {total_wrapping}
+
+              </td>
+              <td width="10" style="padding:0">&nbsp;</td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr class="conf_body">
+        <td bgcolor="#FDFDFD" colspan="3" style="border: 1px solid #DFDFDF;background-color: #FDFDFD;padding:10px 0">
+          <table class="table" style="width:100%;border-collapse:collapse">
+            <tr>
+              <td width="10" style="padding:0">&nbsp;</td>
+              <td align="right" class="table-header">
+
+                {{ 'Shipping'|trans({}, 'EmailsBody', locale)|raw }}
+
+              </td>
+              <td width="10" style="padding:0">&nbsp;</td>
+            </tr>
+          </table>
+        </td>
+        <td bgcolor="#FDFDFD" colspan="3" style="border: 1px solid #DFDFDF;background-color: #FDFDFD;padding:10px 0">
+          <table class="table" style="width:100%;border-collapse:collapse">
+            <tr>
+              <td width="10" style="padding:0">&nbsp;</td>
+              <td align="right" style="padding:0;font-size:14px;font-family:Open sans,Arial,sans-serif">
+
+                {total_shipping}
+
+              </td>
+              <td width="10" style="padding:0">&nbsp;</td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr class="conf_body">
+        <td bgcolor="#FDFDFD" colspan="3" style="border: 1px solid #DFDFDF;background-color: #FDFDFD;padding:10px 0">
+          <table class="table" style="width:100%;border-collapse:collapse">
+            <tr>
+              <td width="10" style="padding:0">&nbsp;</td>
+              <td align="right" class="table-header">
+
+                {{ 'Including total tax'|trans({}, 'EmailsBody', locale)|raw }}
+
+              </td>
+              <td width="10" style="padding:0">&nbsp;</td>
+            </tr>
+          </table>
+        </td>
+        <td bgcolor="#FDFDFD" colspan="3" style="border: 1px solid #DFDFDF;background-color: #FDFDFD;padding:10px 0">
+          <table class="table" style="width:100%;border-collapse:collapse">
+            <tr>
+              <td width="10" style="padding:0">&nbsp;</td>
+              <td align="right" style="padding:0;font-size:14px;font-family:Open sans,Arial,sans-serif">
+
+                {total_tax_paid}
+
+              </td>
+              <td width="10" style="padding:0">&nbsp;</td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr class="conf_body">
+        <td bgcolor="#FDFDFD" colspan="3" style="border: 1px solid #DFDFDF;background-color: #FDFDFD;padding:10px 0">
+          <table class="table" style="width:100%;border-collapse:collapse">
+            <tr>
+              <td width="10" style="padding:0">&nbsp;</td>
+              <td align="right" class="table-header">
+
+                {{ 'Total paid'|trans({}, 'EmailsBody', locale)|raw }}
+
+              </td>
+              <td width="10" style="padding:0">&nbsp;</td>
+            </tr>
+          </table>
+        </td>
+        <td bgcolor="#FDFDFD" colspan="3" style="border: 1px solid #DFDFDF;background-color: #FDFDFD;padding:10px 0">
+          <table class="table" style="width:100%;border-collapse:collapse">
+            <tr>
+              <td width="10" style="padding:0">&nbsp;</td>
+              <td align="right" style="padding:0;font-size:16px;font-weight:bold;font-family:Open sans,Arial,sans-serif">
+
+                {total_paid}
+
+              </td>
+              <td width="10" style="padding:0">&nbsp;</td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+
+    </mj-table>
+  </mj-column>
+</mj-section>
+<mj-raw>
+  <!-- TABLE ENDING -->
+</mj-raw>
+
+<mj-raw>
+  <!-- SUBTITLE BEGINING -->
+</mj-raw>
+<mj-section padding="0 50px 0" text-align="left">
+  <mj-column padding="0">
+    <mj-text padding="0" font-weight="600" font-size="16px">
+      <img src="{{ mailThemesUrl }}/modern_mjml/assets/baseline-local_shipping-24px.png" style="margin-right:10px" />
+      {{ 'Shipping'|trans({}, 'EmailsBody', locale)|raw }}
+    </mj-text>
+  </mj-column>
+</mj-section>
+<mj-raw>
+  <!-- SUBTITLE ENDING -->
+</mj-raw>
+<mj-raw>
+  <!-- BOX BEGINING -->
+</mj-raw>
+<mj-section padding="15px 50px 40px">
+  <mj-column background-color="#fefefe" border="1px solid #DFDFDF" padding-top="10px" padding-bottom="10px">
+    <mj-text font-size="16px">
+      <span class="label">{{ 'Carrier :'|trans({}, 'EmailsBody', locale)|raw }}</span> {carrier}
+    </mj-text>
+    <mj-text padding-top="0" font-size="16px">
+      <span class="label">{{ 'Payment :'|trans({}, 'EmailsBody', locale)|raw }}</span> {payment}
+    </mj-text>
+  </mj-column>
+</mj-section>
+<mj-raw>
+  <!-- BOX ENDING -->
+</mj-raw>
+
+
+<mj-raw>
+  <!-- 2 COLUMNS BEGINING -->
+</mj-raw>
+<mj-section padding="0 25px 0">
+  <mj-column>
+    <mj-table width="100%">
+      <tr>
+        <td class="box">
+          <table class="table" style="width:100%">
+            <tbody>
+            <tr>
+              <td>
+                <p style="font-weight:600;">
+                  <img src="{{ mailThemesUrl }}/modern_mjml/assets/baseline-location_on-24px.png" style="width:15px;margin-right:10px">{{ 'Delivery address'|trans({}, 'EmailsBody', locale)|raw }}</p>
+                <p style="border: 1px solid #DFDFDF;background-color: #FEFEFE;padding:20px;font-size:14px">
+                  {delivery_block_html}
+                </p>
+              </td>
+              <td width="10" class="space" style="padding:7px 0">&nbsp;</td>
+            </tr>
+            </tbody>
+          </table>
+        </td>
+        <td class="box">
+          <table class="table" style="width:100%">
+            <tbody>
+            <tr>
+
+              <td>
+                <p style="font-weight:600;">
+                  <img src="{{ mailThemesUrl }}/modern_mjml/assets/baseline-credit_card-24px.png" style="width:25px;margin-right:10px">{{ 'Billing address'|trans({}, 'EmailsBody', locale)|raw }}</p>
+                <p style="border: 1px solid #DFDFDF;background-color: #FEFEFE;padding:20px;font-size:14px">
+                  {invoice_block_html}
+                </p>
+
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+    </mj-table>
+  </mj-column>
+</mj-section>
+<mj-raw>
+  <!-- 2 COLUMNS ENDING -->
+</mj-raw>
+
+<mj-raw>
+  <!-- FIRST TEXT BEGINING -->
+</mj-raw>
+<mj-section padding="0 25px 20px">
+  <mj-column>
+    <mj-text>{{ 'Follow your order and download your invoice on our shop, go to the <a href="{history_url}" target="_blank">Order history and details</a> section of your customer account.'|trans({}, 'EmailsBody', locale)|raw }}</mj-text>
+  </mj-column>
+</mj-section>
+<mj-raw>
+  <!-- FIRST TEXT ENDING -->
+</mj-raw>
+
+<mj-raw>
+  <!-- SECOND TEXT BEGINING -->
+</mj-raw>
+<mj-section padding="0 25px">
+  <mj-column>
+    <mj-text padding-top="0">
+      {{ 'If you have a guest account, you can follow your order via the <a href="{guest_tracking_url}" target="_blank">Guest Tracking</a> section on our shop.'|trans({}, 'EmailsBody', locale)|raw }}
+    </mj-text>
+  </mj-column>
+</mj-section>
+<mj-raw>
+  <!-- SECOND TEXT ENDING -->
+</mj-raw>
+{% endblock %}
+

@@ -110,7 +110,7 @@ class TwigTemplateConverter
         return $dom->saveHTML();
     }
 
-    public function convertComponentTemplate($mjmlTemplatePath, $mjmlTheme)
+    public function convertComponentTemplate($mjmlTemplatePath, $mjmlTheme, $newTheme)
     {
         if (!file_exists($mjmlTemplatePath)) {
             throw new FileNotFoundException(sprintf('Could not find mjml template %s', $mjmlTemplatePath));
@@ -128,12 +128,12 @@ $this->templateContent
 {% block footer %}{% endblock %}
 ";
 
-        $convertedLayout = $this->convertLayout($templateName);
+        $convertedLayout = $this->convertLayout($templateName, $mjmlTheme, $newTheme);
 
         return $convertedLayout['content'];
     }
 
-    public function convertChildTemplate($mjmlTemplatePath, $newTheme)
+    public function convertChildTemplate($mjmlTemplatePath, $mjmlTheme, $newTheme)
     {
         if (!file_exists($mjmlTemplatePath)) {
             throw new FileNotFoundException(sprintf('Could not find mjml template %s', $mjmlTemplatePath));
@@ -152,7 +152,7 @@ $this->templateContent
         $twigLayout = $this->convertTwigLayoutPath($mjmlLayout, $newTheme);
         $layoutTile = $this->getLayoutTitle();
 
-        $convertedLayout = $this->convertLayout($templateName);
+        $convertedLayout = $this->convertLayout($templateName, $mjmlTheme, $newTheme);
         $layoutContent = $convertedLayout['content'];
         $layoutStyles = $convertedLayout['styles'];
 
@@ -173,11 +173,13 @@ $layoutStyles
 
     /**
      * @param string $templateName
+     * @param string $mjmlTheme
+     * @param string $newTheme
      *
      * @return array
      * @throws \Twig\Error\Error
      */
-    private function convertLayout($templateName)
+    private function convertLayout($templateName, $mjmlTheme, $newTheme)
     {
         $convertedTemplate = $this->convertMjml($templateName, $this->templateContent);
 
@@ -193,6 +195,11 @@ $layoutStyles
         //Link href and img src are wrongly escaped
         $innerHtml = preg_replace('/href="%7B(.*?)%7D"/', 'href="{\1}"', $innerHtml);
         $innerHtml = preg_replace('/src="%7B(.*?)%7D"/', 'src="{\1}"', $innerHtml);
+        $innerHtml = preg_replace('/href="%7B%7B%20(.*?)%20%7D%7D/', 'href="{{ \1 }}', $innerHtml);
+        $innerHtml = preg_replace('/src="%7B%7B%20(.*?)%20%7D%7D/', 'src="{{ \1 }}', $innerHtml);
+
+        //Update assets path
+        $innerHtml = preg_replace('#'.$mjmlTheme.'/assets/#', $newTheme.'/assets/', $innerHtml);
 
         //Each converted template has its own style rules, so we need to extract them as well
         $templateStyles = $this->extractHtml($convertedTemplate, 'head style');
@@ -233,12 +240,11 @@ $layoutStyles
     /**
      * @param string $templateName
      * @param string $templateContent
-     * @param bool $skipIncludes
      *
      * @return string|null
      * @throws \Twig\Error\Error
      */
-    private function convertMjml($templateName, $templateContent, $skipIncludes = true)
+    private function convertMjml($templateName, $templateContent)
     {
         //Print the conversion layout in a file and renders it (Twig needs a file as input)
         $conversionTemplatePath = $this->tempDir.'/'.$templateName;
@@ -248,18 +254,12 @@ $layoutStyles
 
         //Transform {{ }} statements so that they are not executed
         $templateContent = preg_replace('#{{ (.*?) }}#', '%% \1 %%', $templateContent);
-        if ($skipIncludes) {
-            $templateContent = preg_replace('#{% include (.*?) %}#', '## include \1 ##', $templateContent);
-        }
 
         file_put_contents($conversionTemplatePath, $templateContent);
 
         $renderedLayout = $this->engine->render($conversionTemplatePath);
         //Transform back {{ }} statements
         $renderedLayout = preg_replace('#%% (.*?) %%#', '{{ \1 }}', $renderedLayout);
-        if ($skipIncludes) {
-            $renderedLayout = preg_replace('/## include (.*?) ##/', '{% include \1 %}', $renderedLayout);
-        }
 
         file_put_contents($conversionTemplatePath.'.mjml', $renderedLayout);
 

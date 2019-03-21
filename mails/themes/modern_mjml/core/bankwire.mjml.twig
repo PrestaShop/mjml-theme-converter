@@ -1,6 +1,6 @@
 {% extends '@MjmlMailThemes/modern_mjml/components/layout.mjml.twig' %}
 
-{% block title %}Bankwire{% endblock %}
+{% block title %}{{ 'Bankwire'|trans({}, 'EmailsBody', locale) }}{% endblock %}
 
 {% block content %}
 <mj-section padding="0 25px">
@@ -48,7 +48,7 @@
 <mj-section padding="0 25px">
     <mj-column padding="0">
         <mj-text padding-bottom="0px" padding-top="0px" font-size="16px" font-weight="600">
-            {{ 'Order ID {order_name}'|trans({}, 'EmailsBody', locale) }} - {{ 'pending payment'|trans({}, 'EmailsBody', locale)|raw }}
+            {{ 'Order ID {order_name}'|trans({}, 'EmailsBody', locale) }} - {{ 'Pending payment'|trans({}, 'EmailsBody', locale)|raw }}
         </mj-text>
     </mj-column>
 </mj-section>
@@ -63,7 +63,7 @@
 <mj-section padding="15px 50px 40px">
     <mj-column background-color="#fefefe" border="1px solid #DFDFDF" padding="10px 0">
         <mj-text>
-            {{ 'Your order with the reference <span class="strong">{order_name}</span> has been placed successfully. You can expect <span class="strong"> delivery as soon as your payment is received</span>.'|trans({}, 'EmailsBody', locale)|raw }}
+            {{ 'Your order with the reference <span class="label">{order_name}</span> has been placed successfully. You can expect <span class="strong"> delivery as soon as your payment is received</span>.'|trans({}, 'EmailsBody', locale)|raw }}
         </mj-text>
     </mj-column>
 </mj-section>

@@ -1,0 +1,100 @@
+{% extends '@MjmlMailThemes/modern_mjml/components/layout.mjml.twig' %}
+
+{% block title %}{{ 'Download products'|trans({}, 'EmailsBody', locale) }}{% endblock %}
+
+{% block content %}
+<mj-section padding="0 25px">
+    <mj-column padding="0">
+
+        <mj-raw>
+            <!-- TITLE BEGINING -->
+        </mj-raw>
+        <mj-text padding-top="0" padding-bottom="20px" font-weight="600" font-size="20px">
+            {{ 'Hi {firstname} {lastname},'|trans({}, 'EmailsBody', locale) }}
+        </mj-text>
+        <mj-raw>
+            <!-- TITLE ENDING -->
+        </mj-raw>
+
+        <mj-raw>
+            <!-- H2 TITLE BEGINING -->
+        </mj-raw>
+        <mj-text padding-bottom="25px" padding-top="0px" font-size="16px">
+            {{ 'Thank you for your order with the reference {order_name} from <span class="label">{shop_name}</span>'|trans({}, 'EmailsBody', locale)|raw }}
+        </mj-text>
+        <mj-raw>
+            <!-- H2 TITLE ENDING -->
+        </mj-raw>
+
+    </mj-column>
+</mj-section>
+
+<mj-raw>
+    <!-- BORDER BEGINING -->
+</mj-raw>
+<mj-section text-align="left" padding="0 50px 40px">
+    <mj-column width="25px">
+        <mj-divider css-class="left" width="25px" padding-top="0" padding-left="0" padding-right="0" border-width="3px" border-color="#505050"  border-style="solid"></mj-divider>
+    </mj-column>
+</mj-section>
+<mj-raw>
+    <!-- BORDER ENDING -->
+</mj-raw>
+
+<mj-raw>
+    <!-- SUBTITLE BEGINING -->
+</mj-raw>
+<mj-section padding="0 25px 0">
+    <mj-column padding="0">
+        <mj-text padding-bottom="0px" padding-top="0px" font-weight="600" font-size="16px">
+            {{ 'Product(s) to download'|trans({}, 'EmailsBody', locale)|raw }}
+        </mj-text>
+    </mj-column>
+</mj-section>
+<mj-raw>
+    <!-- SUBTITLE ENDING -->
+</mj-raw>
+
+<mj-raw>
+    <!-- BOX BEGINING -->
+</mj-raw>
+<mj-section padding="15px 50px 40px">
+    <mj-column background-color="#fefefe" border="1px solid #DFDFDF" padding-top="10px" padding-bottom="10px">
+        <mj-text>
+            {{ 'You have <span class="label">{nbProducts}</span> product(s) now available for download using the following link(s):'|trans({}, 'EmailsBody', locale)|raw }}
+        </mj-text>
+        <mj-text>
+            {virtualProducts}
+        </mj-text>
+    </mj-column>
+</mj-section>
+<mj-raw>
+    <!-- BOX ENDING -->
+</mj-raw>
+
+<mj-raw>
+    <!-- FIRST TEXT BEGINING -->
+</mj-raw>
+<mj-section padding="0 25px 20px">
+    <mj-column>
+        <mj-text>{{ 'Follow your order and download your invoice on our shop, go to the <a href="{history_url}" target="_blank">Order history and details</a> section of your customer account.'|trans({}, 'EmailsBody', locale)|raw }}</mj-text>
+    </mj-column>
+</mj-section>
+<mj-raw>
+    <!-- FIRST TEXT ENDING -->
+</mj-raw>
+
+<mj-raw>
+    <!-- SECOND TEXT BEGINING -->
+</mj-raw>
+<mj-section padding="0 25px">
+    <mj-column>
+        <mj-text padding-top="0">
+            {{ 'If you have a guest account, you can follow your order via the <a href="{guest_tracking_url}" target="_blank">Guest Tracking</a> section on our shop.'|trans({}, 'EmailsBody', locale)|raw }}
+        </mj-text>
+    </mj-column>
+</mj-section>
+<mj-raw>
+    <!-- SECOND TEXT ENDING -->
+</mj-raw>
+{% endblock %}
