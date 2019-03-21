@@ -179,35 +179,10 @@ $layoutStyles
      */
     private function convertLayout($templateName)
     {
-        //Print the conversion layout in a file and renders it (Twig needs a file as input)
-        $conversionTemplatePath = $this->tempDir.'/'.$templateName;
-        if (!is_dir($this->tempDir)) {
-            $this->fileSystem->mkdir($this->tempDir);
-        }
-
-        //Transform {{ }} statements so that they are not executed
-        $this->templateContent = preg_replace('#{{ (.*?) }}#', '%% \1 %%', $this->templateContent);
-
-        file_put_contents($conversionTemplatePath, $this->templateContent);
-
-        $renderedLayout = $this->engine->render($conversionTemplatePath);
-        //Transform back {{ }} statements
-        $renderedLayout = preg_replace('#%% (.*?) %%#', '{{ \1 }}', $renderedLayout);
-
-        file_put_contents($conversionTemplatePath.'.mjml', $renderedLayout);
-
-        //Convert the conversion template (MJML code is compiled and the template contains mj-raw tags to include the twig tags)
-        $convertedTemplate = $this->mjmlConverter->convert($renderedLayout);
+        $convertedTemplate = $this->convertMjml($templateName, $this->templateContent);
 
         //MJML returns a full html template, get only the body content
-        $crawler = new Crawler($convertedTemplate);
-        /** @var \DOMElement $body */
-        $body = $crawler->filter('.wrapper-container table tr td')->getNode(0);
-        $innerHtml = '';
-        /** @var \DOMElement $childNode */
-        foreach ($body->childNodes as $childNode) {
-            $innerHtml .= $childNode->ownerDocument->saveHTML($childNode);
-        }
+        $innerHtml = $this->extractHtml($convertedTemplate, '.wrapper-container table tr td', 0);
 
         //Add a few EOL for clarity
         $innerHtml = preg_replace('/{% extends (.*?) %}/', "{% extends \\1 %}\n\n", $innerHtml);
@@ -220,20 +195,78 @@ $layoutStyles
         $innerHtml = preg_replace('/src="%7B(.*?)%7D"/', 'src="{\1}"', $innerHtml);
 
         //Each converted template has its own style rules, so we need to extract them as well
-        $crawler = new Crawler($convertedTemplate);
-        /** @var Crawler $stylesCrawler */
-        $stylesCrawler = $crawler->filter('head style');
-        $templateStyles = '';
-        /** @var \DOMElement $childNode */
-        foreach ($stylesCrawler as $childNode) {
-            $templateStyles .= $childNode->ownerDocument->saveHTML($childNode);
-        }
+        $templateStyles = $this->extractHtml($convertedTemplate, 'head style');
         $templateStyles = trim($templateStyles)."\n";
 
         return [
             'content' => $innerHtml,
             'styles' => $templateStyles,
         ];
+    }
+
+    /**
+     * @param string $htmlContent
+     * @param string $selector
+     *
+     * @return string
+     */
+    private function extractHtml($htmlContent, $selector, $nodeIndex = null)
+    {
+        //MJML returns a full html template, get only the body content
+        $crawler = new Crawler($htmlContent);
+        /** @var Crawler $filteredCrawler */
+        $filteredCrawler = $crawler->filter($selector);
+        if (null === $nodeIndex) {
+            $nodeList = $filteredCrawler;
+        } else {
+            $nodeList = $filteredCrawler->getNode($nodeIndex)->childNodes;
+        }
+        $extractedHtml = '';
+        /** @var \DOMElement $childNode */
+        foreach ($nodeList as $childNode) {
+            $extractedHtml .= $childNode->ownerDocument->saveHTML($childNode);
+        }
+
+        return $extractedHtml;
+    }
+
+    /**
+     * @param string $templateName
+     * @param string $templateContent
+     * @param bool $skipIncludes
+     *
+     * @return string|null
+     * @throws \Twig\Error\Error
+     */
+    private function convertMjml($templateName, $templateContent, $skipIncludes = true)
+    {
+        //Print the conversion layout in a file and renders it (Twig needs a file as input)
+        $conversionTemplatePath = $this->tempDir.'/'.$templateName;
+        if (!is_dir($this->tempDir)) {
+            $this->fileSystem->mkdir($this->tempDir);
+        }
+
+        //Transform {{ }} statements so that they are not executed
+        $templateContent = preg_replace('#{{ (.*?) }}#', '%% \1 %%', $templateContent);
+        if ($skipIncludes) {
+            $templateContent = preg_replace('#{% include (.*?) %}#', '## include \1 ##', $templateContent);
+        }
+
+        file_put_contents($conversionTemplatePath, $templateContent);
+
+        $renderedLayout = $this->engine->render($conversionTemplatePath);
+        //Transform back {{ }} statements
+        $renderedLayout = preg_replace('#%% (.*?) %%#', '{{ \1 }}', $renderedLayout);
+        if ($skipIncludes) {
+            $renderedLayout = preg_replace('/## include (.*?) ##/', '{% include \1 %}', $renderedLayout);
+        }
+
+        file_put_contents($conversionTemplatePath.'.mjml', $renderedLayout);
+
+        //Convert the conversion template (MJML code is compiled and the template contains mj-raw tags to include the twig tags)
+        $convertedTemplate = $this->mjmlConverter->convert($renderedLayout);
+
+        return $convertedTemplate;
     }
 
     /**

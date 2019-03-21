@@ -1,6 +1,6 @@
 {% extends '@MjmlMailThemes/modern_mjml/components/layout.mjml.twig' %}
 
-{% block title %}Bankwire{% endblock %}
+{% block title %}Cheque{% endblock %}
 
 {% block content %}
 <mj-section padding="0 25px">
@@ -9,7 +9,7 @@
         <mj-raw>
             <!-- TITLE BEGINING -->
         </mj-raw>
-        <mj-text padding-top="0" padding-bottom="20px" font-weight="600"  font-size="20px">
+        <mj-text padding-top="0" padding-bottom="20px" font-weight="600" font-size="20px">
             {{ 'Hi {firstname} {lastname},'|trans({}, 'EmailsBody', locale) }}
         </mj-text>
         <mj-raw>
@@ -17,13 +17,13 @@
         </mj-raw>
 
         <mj-raw>
-            <!-- SUBTITLE BEGINING -->
+            <!-- H2 TITLE BEGINING -->
         </mj-raw>
         <mj-text font-size="16px" padding-bottom="20px" padding-top="0px">
             {{ 'Thank you for shopping with {shop_name}!'|trans({}, 'EmailsBody', locale) }}
         </mj-text>
         <mj-raw>
-            <!-- SUBTITLE ENDING -->
+            <!-- H2 TITLE ENDING -->
         </mj-raw>
 
 
@@ -36,6 +36,7 @@
 <mj-section text-align="left" padding="0 50px 40px">
     <mj-column width="25px">
         <mj-divider width="25px" css-class="left" padding-top="0" padding-left="0" padding-right="0" border-width="3px" border-color="#505050"  border-style="solid"></mj-divider>
+
     </mj-column>
 </mj-section>
 <mj-raw>
@@ -48,7 +49,7 @@
 <mj-section padding="0 25px">
     <mj-column padding="0">
         <mj-text padding-bottom="0px" padding-top="0px" font-size="16px" font-weight="600">
-            {{ 'Order ID {order_name}'|trans({}, 'EmailsBody', locale) }} - {{ 'pending payment'|trans({}, 'EmailsBody', locale)|raw }}
+            {{ 'Order ID {order_name}'|trans({}, 'EmailsBody', locale) }} - {{ 'Awaiting payment by check'|trans({}, 'EmailsBody', locale)|raw }}
         </mj-text>
     </mj-column>
 </mj-section>
@@ -61,9 +62,9 @@
     <!-- BOX BEGINING -->
 </mj-raw>
 <mj-section padding="15px 50px 40px">
-    <mj-column background-color="#fefefe" border="1px solid #DFDFDF" padding="10px 0">
+    <mj-column background-color="#fefefe" border="1px solid #DFDFDF" padding="20px 0">
         <mj-text>
-            {{ 'Your order with the reference <span class="strong">{order_name}</span> has been placed successfully. You can expect <span class="strong"> delivery as soon as your payment is received</span>.'|trans({}, 'EmailsBody', locale)|raw }}
+            {{ 'Your order with the reference <span class="strong">{order_name}</span> has been placed successfully. You can expect <span class="strong">delivery as soon as your payment is received</span>.'|trans({}, 'EmailsBody', locale)|raw }}
         </mj-text>
     </mj-column>
 </mj-section>
@@ -77,7 +78,7 @@
 <mj-section padding="0 25px">
     <mj-column padding="0">
         <mj-text padding-bottom="0px" padding-top="0px" font-size="16px" font-weight="600">
-            {{ 'Payment method: bank wire'|trans({}, 'EmailsBody', locale)|raw }}
+            {{ 'Payment method: check'|trans({}, 'EmailsBody', locale)|raw }}
         </mj-text>
     </mj-column>
 </mj-section>
@@ -91,25 +92,20 @@
 <mj-section padding="15px 50px 40px">
     <mj-column background-color="#fefefe" padding-top="10px" padding-bottom="10px" border="1px solid #DFDFDF">
         <mj-text font-size="14px">
-            {{ 'You have decided to pay by bank wire.'|trans({}, 'EmailsBody', locale)|raw }}
-            {{ 'Here is the information you need for your transfer:'|trans({}, 'EmailsBody', locale)|raw }}
+            {{ 'You have decided to pay by bank check.'|trans({}, 'EmailsBody', locale)|raw }}
+            {{ 'Here is the information you need for your check:'|trans({}, 'EmailsBody', locale)|raw }}
         </mj-text>
-        <mj-text padding-top="0px" font-size="16px">
+        <mj-text font-size="16px">
             <span class="label">{{ 'Amount :'|trans({}, 'EmailsBody', locale)|raw }}</span>
             <span> {total_paid}</span>
         </mj-text>
         <mj-text padding-top="0px" font-size="16px">
-            <span class="label">{{ 'Account owner :'|trans({}, 'EmailsBody', locale)|raw }}</span>
-            <span> {bankwire_owner}</span>
+            <span class="label">{{ 'Payable to the order of :'|trans({}, 'EmailsBody', locale)|raw }}</span>
+            <span> {check_name}</span>
         </mj-text>
         <mj-text padding-top="0px" font-size="16px">
-            <span class="label">{{ 'Account details :'|trans({}, 'EmailsBody', locale)|raw }}</span><span> {bankwire_details}</span>
-        </mj-text>
-        <mj-text padding-top="0px" font-size="16px">
-            <span class="label">{{ 'Bank address :'|trans({}, 'EmailsBody', locale)|raw }}</span><span> {bankwire_adress}</span>
-        </mj-text>
-        <mj-text>
-            {{ 'Please specify your order reference in the bankwire description.'|trans({}, 'EmailsBody', locale)|raw }}
+            <span class="label">{{ 'Please mail your check to :'|trans({}, 'EmailsBody', locale)|raw }}</span>
+            <span> {check_address_html}</span>
         </mj-text>
     </mj-column>
 </mj-section>
