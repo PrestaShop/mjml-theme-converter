@@ -1,6 +1,6 @@
 {% extends '@MjmlMailThemes/modern_mjml/components/layout.mjml.twig' %}
 
-{% block title %}{{ 'Order changed'|trans({}, 'EmailsBody', locale) }}{% endblock %}
+{% block title %}{{ 'Voucher'|trans({}, 'EmailsBody', locale) }}{% endblock %}
 
 {% block content %}
 <mj-section padding="0 25px">
@@ -34,10 +34,10 @@
 <mj-raw>
   <!-- SUBTITLE BEGINING -->
 </mj-raw>
-<mj-section padding="0 25px 0">
+<mj-section padding="0 25px">
   <mj-column padding="0">
     <mj-text padding-bottom="0px" padding-top="0px" font-size="16px" font-weight="600">
-      {{ 'Order ID {order_name}'|trans({}, 'EmailsBody', locale) }} - {{ 'Order changed'|trans({}, 'EmailsBody', locale)|raw }}
+      {{ 'Order ID {order_name}'|trans({}, 'EmailsBody', locale) }} - {{ 'Voucher code generated'|trans({}, 'EmailsBody', locale)|raw }}
     </mj-text>
   </mj-column>
 </mj-section>
@@ -45,34 +45,24 @@
   <!-- SUBTITLE ENDING -->
 </mj-raw>
 
+
 <mj-raw>
   <!-- BOX BEGINING -->
 </mj-raw>
 <mj-section padding="15px 50px 40px">
   <mj-column background-color="#fefefe" border="1px solid #DFDFDF" padding-top="10px" padding-bottom="10px">
     <mj-text>
-      {{ 'Your order with the reference <span class="label">{order_name}</span> from <span class="label">{shop_name}</span> has been changed by the merchant.'|trans({}, 'EmailsBody', locale)|raw }}
+      {{ 'We are pleased to inform you that a voucher has been generated in your name for order with the reference <span class="label">{order_name}</span>.'|trans({}, 'EmailsBody', locale)|raw }}
     </mj-text>
-    <mj-text>
-      {{ 'Go to your customer account to learn more about it.'|trans({}, 'EmailsBody', locale)|raw }}
+    <mj-text padding-top="0px">
+      {{ '<span class="label">VOUCHER Code: {voucher_num}</span> in the amount of <span class="label">{voucher_amount}</span>'|trans({}, 'EmailsBody', locale)|raw }}
+    </mj-text>
+    <mj-text padding-top="0px">
+      {{ 'In order to use it, just copy/paste this code during check out.'|trans({}, 'EmailsBody', locale)|raw }}
     </mj-text>
   </mj-column>
 </mj-section>
 <mj-raw>
   <!-- BOX ENDING -->
-</mj-raw>
-
-<mj-raw>
-  <!-- SECOND TEXT BEGINING -->
-</mj-raw>
-<mj-section padding="0 25px">
-  <mj-column>
-    <mj-text padding-top="0">
-      {{ 'If you have a guest account, you can follow your order via the <a href="{guest_tracking_url}" target="_blank">Guest Tracking</a> section on our shop.'|trans({}, 'EmailsBody', locale)|raw }}
-    </mj-text>
-  </mj-column>
-</mj-section>
-<mj-raw>
-  <!-- SECOND TEXT ENDING -->
 </mj-raw>
 {% endblock %}

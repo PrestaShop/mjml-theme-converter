@@ -1,6 +1,6 @@
 {% extends '@MjmlMailThemes/modern_mjml/components/layout.mjml.twig' %}
 
-{% block title %}{{ 'Order changed'|trans({}, 'EmailsBody', locale) }}{% endblock %}
+{% block title %}{{ 'Payment Error'|trans({}, 'EmailsBody', locale) }}{% endblock %}
 
 {% block content %}
 <mj-section padding="0 25px">
@@ -36,8 +36,8 @@
 </mj-raw>
 <mj-section padding="0 25px 0">
   <mj-column padding="0">
-    <mj-text padding-bottom="0px" padding-top="0px" font-size="16px" font-weight="600">
-      {{ 'Order ID {order_name}'|trans({}, 'EmailsBody', locale) }} - {{ 'Order changed'|trans({}, 'EmailsBody', locale)|raw }}
+    <mj-text padding-bottom="0px" padding-top="0px" font-weight="600" font-size="16px">
+      {{ 'Order ID {order_name}'|trans({}, 'EmailsBody', locale) }} - {{ 'Payment error'|trans({}, 'EmailsBody', locale)|raw }}
     </mj-text>
   </mj-column>
 </mj-section>
@@ -51,15 +51,27 @@
 <mj-section padding="15px 50px 40px">
   <mj-column background-color="#fefefe" border="1px solid #DFDFDF" padding-top="10px" padding-bottom="10px">
     <mj-text>
-      {{ 'Your order with the reference <span class="label">{order_name}</span> from <span class="label">{shop_name}</span> has been changed by the merchant.'|trans({}, 'EmailsBody', locale)|raw }}
-    </mj-text>
-    <mj-text>
-      {{ 'Go to your customer account to learn more about it.'|trans({}, 'EmailsBody', locale)|raw }}
+      {{ 'We have encountered an error while processing your payment for your order with the reference <span class="label">{order_name}</span> from <span class="label">{shop_name}</span>. Please contact us as soon as possible.'|trans({}, 'EmailsBody', locale)|raw }}
+      <p style="font-weight:600">
+        {{ 'You can expect delivery as soon as your payment is received.'|trans({}, 'EmailsBody', locale)|raw }}
+      </p>
     </mj-text>
   </mj-column>
 </mj-section>
 <mj-raw>
   <!-- BOX ENDING -->
+</mj-raw>
+
+<mj-raw>
+  <!-- FIRST TEXT BEGINING -->
+</mj-raw>
+<mj-section padding="0 25px 20px">
+  <mj-column>
+    <mj-text>{{ 'Follow your order and download your invoice on our shop, go to the <a href="{history_url}" target="_blank">Order history and details</a> section of your customer account.'|trans({}, 'EmailsBody', locale)|raw }}</mj-text>
+  </mj-column>
+</mj-section>
+<mj-raw>
+  <!-- FIRST TEXT ENDING -->
 </mj-raw>
 
 <mj-raw>
