@@ -38,7 +38,7 @@
 <mj-section padding="0 25px">
     <mj-column padding="0">
         <mj-text padding-bottom="0px" padding-top="0px" font-size="16px" font-weight="600">
-            {{ 'Customer Service - Discussion Transferred'|trans({}, 'EmailsBody', locale)|raw }}
+            {{ 'Customer Service - Discussion Forwarded'|trans({}, 'EmailsBody', locale)|raw }}
         </mj-text>
     </mj-column>
 </mj-section>
@@ -56,7 +56,7 @@
             {{ '<span class="label">{employee}</span> wanted to forward this discussion to you.'|trans({}, 'EmailsBody', locale)|raw }}
         </mj-text>
         <mj-text padding-top="0px">
-            <span class="label">{{ 'Discussion history :'|trans({}, 'EmailsBody', locale)|raw }}</span>&nbsp;<span>{messages}</span>
+            <span class="label">{{ 'Discussion history:'|trans({}, 'EmailsBody', locale)|raw }}</span>&nbsp;<span>{messages}</span>
         </mj-text>
         <mj-text padding-top="0px">
             {{ '<span class="label">{employee}</span> added <span class="label">{comment}</span>'|trans({}, 'EmailsBody', locale)|raw }}

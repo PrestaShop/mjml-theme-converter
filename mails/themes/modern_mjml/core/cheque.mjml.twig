@@ -96,15 +96,15 @@
             {{ 'Here is the information you need for your check:'|trans({}, 'EmailsBody', locale)|raw }}
         </mj-text>
         <mj-text font-size="16px">
-            <span class="label">{{ 'Amount :'|trans({}, 'EmailsBody', locale)|raw }}</span>
+            <span class="label">{{ 'Amount:'|trans({}, 'EmailsBody', locale)|raw }}</span>
             <span> {total_paid}</span>
         </mj-text>
         <mj-text padding-top="0px" font-size="16px">
-            <span class="label">{{ 'Payable to the order of :'|trans({}, 'EmailsBody', locale)|raw }}</span>
+            <span class="label">{{ 'Payable to the order of:'|trans({}, 'EmailsBody', locale)|raw }}</span>
             <span> {check_name}</span>
         </mj-text>
         <mj-text padding-top="0px" font-size="16px">
-            <span class="label">{{ 'Please mail your check to :'|trans({}, 'EmailsBody', locale)|raw }}</span>
+            <span class="label">{{ 'Please mail your check to:'|trans({}, 'EmailsBody', locale)|raw }}</span>
             <span> {check_address_html}</span>
         </mj-text>
     </mj-column>

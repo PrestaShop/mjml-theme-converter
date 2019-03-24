@@ -10,7 +10,7 @@
       <!-- TITLE BEGINING -->
     </mj-raw>
     <mj-text padding-top="0" padding-bottom="20px" font-weight="600" font-size="20px">
-      {{ 'Congratulations !'|trans({}, 'EmailsBody', locale)|raw }}
+      {{ 'Congratulations!'|trans({}, 'EmailsBody', locale)|raw }}
     </mj-text>
     <mj-raw>
       <!-- TITLE ENDING -->
@@ -38,7 +38,7 @@
 <mj-section padding="15px 50px 40px">
   <mj-column background-color="#fefefe" border="1px solid #DFDFDF" padding="20px 0">
     <mj-text>
-      {{ 'Your referred friend <span class="label">{sponsored_firstname}</span> <span class="label">{sponsored_lastname}</span> has placed his or her first order on <a href="{shop_url}">{shop_name}</a>!'|trans({}, 'EmailsBody', locale)|raw }}
+      {{ 'Your referred friend <span class="label">{sponsored_firstname}</span> <span class="label">{sponsored_lastname}</span> has placed his/her first order on <a href="{shop_url}">{shop_name}</a>!'|trans({}, 'EmailsBody', locale)|raw }}
     </mj-text>
     <mj-text padding-top="0px">
       {{ 'We are pleased to offer you a voucher worth <span class="label">{discount_display}</span> (VOUCHER # <span class="label">{discount_name}</span> that you can use on your next order.'|trans({}, 'EmailsBody', locale)|raw }}

@@ -41,15 +41,15 @@
             {{ 'Your message has been sent successfully, thank you for taking the time to write!'|trans({}, 'EmailsBody', locale)|raw }}
         </mj-text>
         <mj-text font-size="16px">
-            <span class="label">{{ 'Order ID # :'|trans({}, 'EmailsBody', locale)|raw }}</span>
+            <span class="label">{{ 'Order ID #:'|trans({}, 'EmailsBody', locale)|raw }}</span>
             <span> {order_name}</span>
         </mj-text>
         <mj-text padding-top="0px" font-size="16px">
-            <span class="label">{{ 'Product :'|trans({}, 'EmailsBody', locale)|raw }}</span>
+            <span class="label">{{ 'Product:'|trans({}, 'EmailsBody', locale)|raw }}</span>
             <span> {product_name}</span>
         </mj-text>
         <mj-text padding-top="0px" font-size="16px">
-            <span class="label">{{ 'Attached file :'|trans({}, 'EmailsBody', locale)|raw }}</span><span> {attached_file}</span>
+            <span class="label">{{ 'Attached file:'|trans({}, 'EmailsBody', locale)|raw }}</span><span> {attached_file}</span>
         </mj-text>
     </mj-column>
 </mj-section>
