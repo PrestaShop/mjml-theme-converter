@@ -1,6 +1,6 @@
 {% extends '@MjmlMailThemes/modern_mjml/components/layout.mjml.twig' %}
 
-{% block title %}{{ 'Follow up 4'|trans({}, 'EmailsBody', locale) }}{% endblock %}
+{% block title %}{{ 'Follow up 4'|trans({}, 'Emails.Body', locale) }}{% endblock %}
 
 {% block content %}
 <mj-section padding="0 25px">
@@ -10,7 +10,7 @@
             <!-- TITLE BEGINING -->
         </mj-raw>
         <mj-text padding-top="0" padding-bottom="20px" font-weight="600" font-size="20px">
-            {{ 'Hi {firstname} {lastname},'|trans({}, 'EmailsBody', locale) }}
+            {{ 'Hi {firstname} {lastname},'|trans({}, 'Emails.Body', locale) }}
         </mj-text>
         <mj-raw>
             <!-- TITLE ENDING -->
@@ -38,7 +38,7 @@
 <mj-section padding="0 25px">
     <mj-column padding="0">
         <mj-text padding-bottom="0px" padding-top="0px" font-size="16px" font-weight="600">
-            {{ 'Your cart on {shop_name}'|trans({}, 'EmailsBody', locale)|raw }}
+            {{ 'Your cart on {shop_name}'|trans({}, 'Emails.Body', locale)|raw }}
         </mj-text>
     </mj-column>
 </mj-section>
@@ -53,13 +53,13 @@
 <mj-section padding="15px 50px 40px">
     <mj-column background-color="#fefefe" border="1px solid #DFDFDF" padding="20px 0">
         <mj-text>
-            {{ 'Congratulations, you are one of our best customers! However, it looks like you have not placed an order since {days_threshold} days.'|trans({}, 'EmailsBody', locale)|raw }}
+            {{ 'Congratulations, you are one of our best customers! However, it looks like you have not placed an order since {days_threshold} days.'|trans({}, 'Emails.Body', locale)|raw }}
         </mj-text>
         <mj-text padding-top="0px">
-            {{ 'Your cart has been saved, you can resume your order by visiting our shop:'|trans({}, 'EmailsBody', locale)|raw }} <a href="{shop_url}" target="_blank">{shop_url}</a>
+            {{ 'Your cart has been saved, you can resume your order by visiting our shop:'|trans({}, 'Emails.Body', locale)|raw }} <a href="{shop_url}" target="_blank">{shop_url}</a>
         </mj-text>
         <mj-text padding-top="0px">
-            {{ 'We are pleased to offer you a discount of <span class="label">{amount}%</span> off your next order. And this offer is valid for <span class="label">{days}</span> days, so do not wait any longer!'|trans({}, 'EmailsBody', locale)|raw }}
+            {{ 'We are pleased to offer you a discount of <span class="label">{amount}%</span> off your next order. And this offer is valid for <span class="label">{days}</span> days, so do not wait any longer!'|trans({}, 'Emails.Body', locale)|raw }}
         </mj-text>
     </mj-column>
 </mj-section>
@@ -74,10 +74,10 @@
 <mj-section padding="15px 50px 40px">
     <mj-column background-color="#fefefe" padding-top="10px" padding-bottom="10px" border="1px solid #DFDFDF">
         <mj-text font-size="14px">
-            <span style="font-weight:700">{{ 'Here is your Voucher Code:'|trans({}, 'EmailsBody', locale)|raw }}</span> {voucher_num}
+            <span style="font-weight:700">{{ 'Here is your Voucher Code:'|trans({}, 'Emails.Body', locale)|raw }}</span> {voucher_num}
         </mj-text>
         <mj-text padding-top="0px">
-            {{ 'Enter this code in your shopping cart to get the discount.'|trans({}, 'EmailsBody', locale)|raw }}
+            {{ 'Enter this code in your shopping cart to get the discount.'|trans({}, 'Emails.Body', locale)|raw }}
         </mj-text>
 
     </mj-column>

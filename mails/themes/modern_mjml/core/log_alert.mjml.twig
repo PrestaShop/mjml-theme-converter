@@ -1,6 +1,6 @@
 {% extends '@MjmlMailThemes/modern_mjml/components/layout.mjml.twig' %}
 
-{% block title %}{{ 'Log Alert'|trans({}, 'EmailsBody', locale) }}{% endblock %}
+{% block title %}{{ 'Log Alert'|trans({}, 'Emails.Body', locale) }}{% endblock %}
 
 {% block content %}
 <mj-section padding="0 25px">
@@ -10,7 +10,7 @@
       <!-- TITLE BEGINING -->
     </mj-raw>
     <mj-text padding-top="0" padding-bottom="20px" font-weight="600" font-size="20px">
-      {{ 'Hi {firstname} {lastname},'|trans({}, 'EmailsBody', locale) }}
+      {{ 'Hi {firstname} {lastname},'|trans({}, 'Emails.Body', locale) }}
     </mj-text>
     <mj-raw>
       <!-- TITLE ENDING -->
@@ -38,7 +38,7 @@
 <mj-section padding="0 25px 0">
   <mj-column padding="0">
     <mj-text padding-bottom="0px" padding-top="0px" font-weight="600" font-size="16px">
-      {{ 'New alert message saved'|trans({}, 'EmailsBody', locale)|raw }}
+      {{ 'New alert message saved'|trans({}, 'Emails.Body', locale)|raw }}
     </mj-text>
   </mj-column>
 </mj-section>
@@ -52,10 +52,10 @@
 <mj-section padding="15px 50px 40px">
   <mj-column background-color="#fefefe" border="1px solid #DFDFDF" padding="20px 0">
     <mj-text>
-      {{ '<span class="warning">WARNING:</span> you have received a new log alert in your back office.'|trans({}, 'EmailsBody', locale)|raw }}
+      {{ '<span class="warning">WARNING:</span> you have received a new log alert in your back office.'|trans({}, 'Emails.Body', locale)|raw }}
     </mj-text>
     <mj-text padding-top="0px">
-      {{ 'You can check for it in the <span class="label">"Advanced Parameters" > "Logs"</span> section of your back office.'|trans({}, 'EmailsBody', locale)|raw }}
+      {{ 'You can check for it in the <span class="label">"Advanced Parameters" > "Logs"</span> section of your back office.'|trans({}, 'Emails.Body', locale)|raw }}
     </mj-text>
   </mj-column>
 </mj-section>

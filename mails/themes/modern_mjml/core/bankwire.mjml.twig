@@ -1,6 +1,6 @@
 {% extends '@MjmlMailThemes/modern_mjml/components/layout.mjml.twig' %}
 
-{% block title %}{{ 'Bankwire'|trans({}, 'EmailsBody', locale) }}{% endblock %}
+{% block title %}{{ 'Bankwire'|trans({}, 'Emails.Body', locale) }}{% endblock %}
 
 {% block content %}
 <mj-section padding="0 25px">
@@ -10,7 +10,7 @@
             <!-- TITLE BEGINING -->
         </mj-raw>
         <mj-text padding-top="0" padding-bottom="20px" font-weight="600"  font-size="20px">
-            {{ 'Hi {firstname} {lastname},'|trans({}, 'EmailsBody', locale) }}
+            {{ 'Hi {firstname} {lastname},'|trans({}, 'Emails.Body', locale) }}
         </mj-text>
         <mj-raw>
             <!-- TITLE ENDING -->
@@ -20,7 +20,7 @@
             <!-- SUBTITLE BEGINING -->
         </mj-raw>
         <mj-text font-size="16px" padding-bottom="20px" padding-top="0px">
-            {{ 'Thank you for shopping with {shop_name}!'|trans({}, 'EmailsBody', locale) }}
+            {{ 'Thank you for shopping with {shop_name}!'|trans({}, 'Emails.Body', locale) }}
         </mj-text>
         <mj-raw>
             <!-- SUBTITLE ENDING -->
@@ -48,7 +48,7 @@
 <mj-section padding="0 25px">
     <mj-column padding="0">
         <mj-text padding-bottom="0px" padding-top="0px" font-size="16px" font-weight="600">
-            {{ 'Order ID {order_name}'|trans({}, 'EmailsBody', locale) }} - {{ 'Pending payment'|trans({}, 'EmailsBody', locale)|raw }}
+            {{ 'Order ID {order_name}'|trans({}, 'Emails.Body', locale) }} - {{ 'Pending payment'|trans({}, 'Emails.Body', locale)|raw }}
         </mj-text>
     </mj-column>
 </mj-section>
@@ -63,7 +63,7 @@
 <mj-section padding="15px 50px 40px">
     <mj-column background-color="#fefefe" border="1px solid #DFDFDF" padding="10px 0">
         <mj-text>
-            {{ 'Your order with the reference <span class="label">{order_name}</span> has been placed successfully. You can expect <span class="strong">delivery as soon as your payment is received</span>.'|trans({}, 'EmailsBody', locale)|raw }}
+            {{ 'Your order with the reference <span class="label">{order_name}</span> has been placed successfully. You can expect <span class="strong">delivery as soon as your payment is received</span>.'|trans({}, 'Emails.Body', locale)|raw }}
         </mj-text>
     </mj-column>
 </mj-section>
@@ -77,7 +77,7 @@
 <mj-section padding="0 25px">
     <mj-column padding="0">
         <mj-text padding-bottom="0px" padding-top="0px" font-size="16px" font-weight="600">
-            {{ 'Payment method: bank wire'|trans({}, 'EmailsBody', locale)|raw }}
+            {{ 'Payment method: bank wire'|trans({}, 'Emails.Body', locale)|raw }}
         </mj-text>
     </mj-column>
 </mj-section>
@@ -91,25 +91,25 @@
 <mj-section padding="15px 50px 40px">
     <mj-column background-color="#fefefe" padding-top="10px" padding-bottom="10px" border="1px solid #DFDFDF">
         <mj-text font-size="14px">
-            {{ 'You have decided to pay by bank wire.'|trans({}, 'EmailsBody', locale)|raw }}
-            {{ 'Here is the information you need for your transfer:'|trans({}, 'EmailsBody', locale)|raw }}
+            {{ 'You have decided to pay by bank wire.'|trans({}, 'Emails.Body', locale)|raw }}
+            {{ 'Here is the information you need for your transfer:'|trans({}, 'Emails.Body', locale)|raw }}
         </mj-text>
         <mj-text padding-top="0px" font-size="16px">
-            <span class="label">{{ 'Amount:'|trans({}, 'EmailsBody', locale)|raw }}</span>
+            <span class="label">{{ 'Amount:'|trans({}, 'Emails.Body', locale)|raw }}</span>
             <span> {total_paid}</span>
         </mj-text>
         <mj-text padding-top="0px" font-size="16px">
-            <span class="label">{{ 'Account owner:'|trans({}, 'EmailsBody', locale)|raw }}</span>
+            <span class="label">{{ 'Account owner:'|trans({}, 'Emails.Body', locale)|raw }}</span>
             <span> {bankwire_owner}</span>
         </mj-text>
         <mj-text padding-top="0px" font-size="16px">
-            <span class="label">{{ 'Account details:'|trans({}, 'EmailsBody', locale)|raw }}</span><span> {bankwire_details}</span>
+            <span class="label">{{ 'Account details:'|trans({}, 'Emails.Body', locale)|raw }}</span><span> {bankwire_details}</span>
         </mj-text>
         <mj-text padding-top="0px" font-size="16px">
-            <span class="label">{{ 'Bank address:'|trans({}, 'EmailsBody', locale)|raw }}</span><span> {bankwire_adress}</span>
+            <span class="label">{{ 'Bank address:'|trans({}, 'Emails.Body', locale)|raw }}</span><span> {bankwire_adress}</span>
         </mj-text>
         <mj-text>
-            {{ 'Please specify your order reference in the bankwire description.'|trans({}, 'EmailsBody', locale)|raw }}
+            {{ 'Please specify your order reference in the bankwire description.'|trans({}, 'Emails.Body', locale)|raw }}
         </mj-text>
     </mj-column>
 </mj-section>
@@ -122,7 +122,7 @@
 </mj-raw>
 <mj-section padding="0 25px 20px">
     <mj-column>
-        <mj-text>{{ 'Follow your order and download your invoice on our shop, go to the <a href="{history_url}" target="_blank">Order history and details</a> section of your customer account.'|trans({}, 'EmailsBody', locale)|raw }}</mj-text>
+        <mj-text>{{ 'Follow your order and download your invoice on our shop, go to the <a href="{history_url}" target="_blank">Order history and details</a> section of your customer account.'|trans({}, 'Emails.Body', locale)|raw }}</mj-text>
     </mj-column>
 </mj-section>
 <mj-raw>
@@ -135,7 +135,7 @@
 <mj-section padding="0 25px">
     <mj-column>
         <mj-text padding-top="0">
-            {{ 'If you have a guest account, you can follow your order via the <a href="{guest_tracking_url}" target="_blank">Guest Tracking</a> section on our shop.'|trans({}, 'EmailsBody', locale)|raw }}
+            {{ 'If you have a guest account, you can follow your order via the <a href="{guest_tracking_url}" target="_blank">Guest Tracking</a> section on our shop.'|trans({}, 'Emails.Body', locale)|raw }}
         </mj-text>
     </mj-column>
 </mj-section>

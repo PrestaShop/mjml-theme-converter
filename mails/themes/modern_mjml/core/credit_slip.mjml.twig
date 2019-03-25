@@ -1,6 +1,6 @@
 {% extends '@MjmlMailThemes/modern_mjml/components/layout.mjml.twig' %}
 
-{% block title %}{{ 'Credit Slip'|trans({}, 'EmailsBody', locale) }}{% endblock %}
+{% block title %}{{ 'Credit Slip'|trans({}, 'Emails.Body', locale) }}{% endblock %}
 
 {% block content %}
 <mj-section padding="0 25px">
@@ -10,7 +10,7 @@
             <!-- TITLE BEGINING -->
         </mj-raw>
         <mj-text padding-top="0" padding-bottom="20px" font-weight="600" font-size="20px">
-            {{ 'Hi {firstname} {lastname},'|trans({}, 'EmailsBody', locale) }}
+            {{ 'Hi {firstname} {lastname},'|trans({}, 'Emails.Body', locale) }}
         </mj-text>
         <mj-raw>
             <!-- TITLE ENDING -->
@@ -38,7 +38,7 @@
 <mj-section padding="0 25px 0">
     <mj-column padding="0">
         <mj-text padding-bottom="0px" padding-top="0px" font-size="16px" font-weight="600">
-            {{ 'Order ID {order_name}'|trans({}, 'EmailsBody', locale) }} - {{ 'Credit slip'|trans({}, 'EmailsBody', locale)|raw }}
+            {{ 'Order ID {order_name}'|trans({}, 'Emails.Body', locale) }} - {{ 'Credit slip'|trans({}, 'Emails.Body', locale)|raw }}
         </mj-text>
     </mj-column>
 </mj-section>
@@ -52,7 +52,7 @@
 <mj-section padding="15px 50px 40px">
     <mj-column background-color="#fefefe" border="1px solid #DFDFDF" padding="20px 0">
         <mj-text>
-            {{ 'A credit slip has been generated in your name for order with the reference <span class="label">{order_name}</span>.'|trans({}, 'EmailsBody', locale)|raw }}
+            {{ 'A credit slip has been generated in your name for order with the reference <span class="label">{order_name}</span>.'|trans({}, 'Emails.Body', locale)|raw }}
         </mj-text>
     </mj-column>
 </mj-section>
@@ -66,7 +66,7 @@
 <mj-section padding="0 25px 30px">
     <mj-column>
         <mj-text>
-            {{ 'Review this credit slip and download your invoice on our shop, go to the <a href="{history_url}" target="_blank">Credit slips</a> section of your customer account.'|trans({}, 'EmailsBody', locale)|raw }}
+            {{ 'Review this credit slip and download your invoice on our shop, go to the <a href="{history_url}" target="_blank">Credit slips</a> section of your customer account.'|trans({}, 'Emails.Body', locale)|raw }}
         </mj-text>
     </mj-column>
 </mj-section>

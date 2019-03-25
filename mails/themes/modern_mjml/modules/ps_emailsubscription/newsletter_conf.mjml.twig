@@ -1,6 +1,6 @@
 {% extends '@MjmlMailThemes/modern_mjml/components/layout.mjml.twig' %}
 
-{% block title %}{{ 'Newsletter Confirmation'|trans({}, 'EmailsBody', locale) }}{% endblock %}
+{% block title %}{{ 'Newsletter Confirmation'|trans({}, 'Emails.Body', locale) }}{% endblock %}
 
 {% block content %}
 <mj-section padding="0 25px">
@@ -10,7 +10,7 @@
       <!-- TITLE BEGINING -->
     </mj-raw>
     <mj-text padding-top="0" padding-bottom="20px" font-weight="600" font-size="20px">
-      {{ 'Hi,'|trans({}, 'EmailsBody', locale)|raw }}
+      {{ 'Hi,'|trans({}, 'Emails.Body', locale)|raw }}
     </mj-text>
     <mj-raw>
       <!-- TITLE ENDING -->
@@ -38,7 +38,7 @@
 <mj-section padding="15px 50px 40px">
   <mj-column background-color="#fefefe" padding-top="10px" padding-bottom="10px" border="1px solid #DFDFDF">
     <mj-text font-weight="600">
-      {{ 'Thank you for subscribing to our newsletter.'|trans({}, 'EmailsBody', locale)|raw }}
+      {{ 'Thank you for subscribing to our newsletter.'|trans({}, 'Emails.Body', locale)|raw }}
     </mj-text>
   </mj-column>
 </mj-section>

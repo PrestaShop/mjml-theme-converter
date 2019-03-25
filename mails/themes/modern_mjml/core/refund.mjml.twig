@@ -1,6 +1,6 @@
 {% extends '@MjmlMailThemes/modern_mjml/components/layout.mjml.twig' %}
 
-{% block title %}{{ 'Refund'|trans({}, 'EmailsBody', locale) }}{% endblock %}
+{% block title %}{{ 'Refund'|trans({}, 'Emails.Body', locale) }}{% endblock %}
 
 {% block content %}
 <mj-section padding="0 25px">
@@ -9,7 +9,7 @@
       <!-- TITLE BEGINING -->
     </mj-raw>
     <mj-text padding-top="0" padding-bottom="20px" font-weight="600" font-size="20px">
-      {{ 'Hi {firstname} {lastname},'|trans({}, 'EmailsBody', locale) }}
+      {{ 'Hi {firstname} {lastname},'|trans({}, 'Emails.Body', locale) }}
     </mj-text>
     <mj-raw>
       <!-- TITLE ENDING -->
@@ -19,7 +19,7 @@
       <!-- SUBTITLE BEGINING -->
     </mj-raw>
     <mj-text font-size="16px" padding-bottom="20px" padding-top="0px">
-      {{ 'Order ID {order_name}'|trans({}, 'EmailsBody', locale) }} - {{ 'Refund processed'|trans({}, 'EmailsBody', locale)|raw }}
+      {{ 'Order ID {order_name}'|trans({}, 'Emails.Body', locale) }} - {{ 'Refund processed'|trans({}, 'Emails.Body', locale)|raw }}
     </mj-text>
     <mj-raw>
       <!-- SUBTITLE ENDING -->
@@ -47,7 +47,7 @@
 <mj-section padding="15px 50px 40px">
   <mj-column background-color="#fefefe" border="1px solid #DFDFDF" padding-top="10px" padding-bottom="10px">
     <mj-text>
-      {{ 'We have processed your refund for your order with the reference <span class="label">{order_name}</span> from <span class="label">{shop_name}</span>.'|trans({}, 'EmailsBody', locale)|raw }}
+      {{ 'We have processed your refund for your order with the reference <span class="label">{order_name}</span> from <span class="label">{shop_name}</span>.'|trans({}, 'Emails.Body', locale)|raw }}
     </mj-text>
   </mj-column>
 </mj-section>
@@ -60,7 +60,7 @@
 </mj-raw>
 <mj-section padding="0 25px 20px">
   <mj-column>
-    <mj-text>{{ 'Follow your order and download your invoice on our shop, go to the <a href="{history_url}" target="_blank">Order history and details</a> section of your customer account.'|trans({}, 'EmailsBody', locale)|raw }}</mj-text>
+    <mj-text>{{ 'Follow your order and download your invoice on our shop, go to the <a href="{history_url}" target="_blank">Order history and details</a> section of your customer account.'|trans({}, 'Emails.Body', locale)|raw }}</mj-text>
   </mj-column>
 </mj-section>
 <mj-raw>
@@ -73,7 +73,7 @@
 <mj-section padding="0 25px">
   <mj-column>
     <mj-text padding-top="0">
-      {{ 'If you have a guest account, you can follow your order via the <a href="{guest_tracking_url}" target="_blank">Guest Tracking</a> section on our shop.'|trans({}, 'EmailsBody', locale)|raw }}
+      {{ 'If you have a guest account, you can follow your order via the <a href="{guest_tracking_url}" target="_blank">Guest Tracking</a> section on our shop.'|trans({}, 'Emails.Body', locale)|raw }}
     </mj-text>
   </mj-column>
 </mj-section>

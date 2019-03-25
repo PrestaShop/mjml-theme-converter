@@ -1,6 +1,6 @@
 {% extends '@MjmlMailThemes/modern_mjml/components/layout.mjml.twig' %}
 
-{% block title %}{{ 'Test'|trans({}, 'EmailsBody', locale) }}{% endblock %}
+{% block title %}{{ 'Test'|trans({}, 'Emails.Body', locale) }}{% endblock %}
 
 {% block content %}
 <mj-section padding="0 25px">
@@ -10,7 +10,7 @@
       <!-- TITLE BEGINING -->
     </mj-raw>
     <mj-text padding-top="0" padding-bottom="20px" font-weight="600" font-size="20px">
-      {{ 'Hi {firstname} {lastname},'|trans({}, 'EmailsBody', locale) }}
+      {{ 'Hi {firstname} {lastname},'|trans({}, 'Emails.Body', locale) }}
     </mj-text>
     <mj-raw>
       <!-- TITLE ENDING -->
@@ -37,10 +37,10 @@
 <mj-section padding="0 25px">
   <mj-column padding="0">
     <mj-text padding-top="0" padding-bottom="20px" >
-      {{ 'Here is a test <span class="label">email</span> from your shop.'|trans({}, 'EmailsBody', locale)|raw }}
+      {{ 'Here is a test <span class="label">email</span> from your shop.'|trans({}, 'Emails.Body', locale)|raw }}
     </mj-text>
     <mj-text padding-top="0" padding-bottom="20px" >
-      {{ 'If you can read this, it means the test is successful!'|trans({}, 'EmailsBody', locale)|raw }}
+      {{ 'If you can read this, it means the test is successful!'|trans({}, 'Emails.Body', locale)|raw }}
     </mj-text>
   </mj-column>
 </mj-section>

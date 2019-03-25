@@ -1,6 +1,6 @@
 {% extends '@MjmlMailThemes/modern_mjml/components/layout.mjml.twig' %}
 
-{% block title %}{{ 'Refferalprogram Invitation'|trans({}, 'EmailsBody', locale) }}{% endblock %}
+{% block title %}{{ 'Refferalprogram Invitation'|trans({}, 'Emails.Body', locale) }}{% endblock %}
 
 {% block content %}
 <mj-section padding="0 25px">
@@ -10,7 +10,7 @@
       <!-- TITLE BEGINING -->
     </mj-raw>
     <mj-text padding-top="0" padding-bottom="20px" font-weight="600" font-size="20px">
-      {firstname_friend} {lastname_friend}, {{ 'Join us!'|trans({}, 'EmailsBody', locale)|raw }}
+      {firstname_friend} {lastname_friend}, {{ 'Join us!'|trans({}, 'Emails.Body', locale)|raw }}
     </mj-text>
     <mj-raw>
       <!-- TITLE ENDING -->
@@ -38,13 +38,13 @@
 <mj-section padding="15px 50px 40px">
   <mj-column background-color="#fefefe" border="1px solid #DFDFDF" padding="20px 0">
     <mj-text>
-      {{ 'Your friend <span class="label">{firstname} {lastname}</span> wants to refer you on <a href="{shop_url}" target="_blank">{shop_name}</a>!'|trans({}, 'EmailsBody', locale)|raw }}
+      {{ 'Your friend <span class="label">{firstname} {lastname}</span> wants to refer you on <a href="{shop_url}" target="_blank">{shop_name}</a>!'|trans({}, 'Emails.Body', locale)|raw }}
     </mj-text>
     <mj-text padding-top="0px">
-      {{ 'We are pleased to offer you a voucher worth <span class="label">{discount}</span> that you can use on your next order.'|trans({}, 'EmailsBody', locale)|raw }}
-      {{ 'Get referred and earn a discount voucher of <span class="label">{discount}</span>!'|trans({}, 'EmailsBody', locale)|raw }}
+      {{ 'We are pleased to offer you a voucher worth <span class="label">{discount}</span> that you can use on your next order.'|trans({}, 'Emails.Body', locale)|raw }}
+      {{ 'Get referred and earn a discount voucher of <span class="label">{discount}</span>!'|trans({}, 'Emails.Body', locale)|raw }}
       <p>
-        <a href="{link}" class="light" target="_blank">{{ 'It\'s very easy to sign up, just click here!'|trans({}, 'EmailsBody', locale)|raw }}</a>
+        <a href="{link}" class="light" target="_blank">{{ 'It\'s very easy to sign up, just click here!'|trans({}, 'Emails.Body', locale)|raw }}</a>
       </p>
     </mj-text>
   </mj-column>
@@ -59,7 +59,7 @@
 <mj-section padding="0 25px 20px">
   <mj-column>
     <mj-text>
-      {{ 'When signing up, don\'t forget to provide the email address of your referring friend:'|trans({}, 'EmailsBody', locale)|raw }} <span class="label">{email}</span>.
+      {{ 'When signing up, don\'t forget to provide the email address of your referring friend:'|trans({}, 'Emails.Body', locale)|raw }} <span class="label">{email}</span>.
     </mj-text>
   </mj-column>
 </mj-section>
@@ -73,7 +73,7 @@
 <mj-section padding="0 25px">
   <mj-column>
     <mj-text padding-top="0">
-      {{ 'Best regards,'|trans({}, 'EmailsBody', locale)|raw }}
+      {{ 'Best regards,'|trans({}, 'Emails.Body', locale)|raw }}
     </mj-text>
   </mj-column>
 </mj-section>

@@ -1,6 +1,6 @@
 {% extends '@MjmlMailThemes/modern_mjml/components/layout.mjml.twig' %}
 
-{% block title %}{{ 'Back Office Order'|trans({}, 'EmailsBody', locale) }}{% endblock %}
+{% block title %}{{ 'Back Office Order'|trans({}, 'Emails.Body', locale) }}{% endblock %}
 
 {% block content %}
 <mj-section padding="0 25px">
@@ -10,7 +10,7 @@
             <!-- TITLE BEGINING -->
         </mj-raw>
         <mj-text padding-top="0" padding-bottom="20px" font-weight="600" font-size="20px">
-            {{ 'Hi {firstname} {lastname},'|trans({}, 'EmailsBody', locale) }}
+            {{ 'Hi {firstname} {lastname},'|trans({}, 'Emails.Body', locale) }}
         </mj-text>
         <mj-raw>
             <!-- TITLE ENDING -->
@@ -39,7 +39,7 @@
 <mj-section padding="0 25px 0">
     <mj-column padding="0">
         <mj-text padding-bottom="0px" padding-top="0px" font-size="16px" font-weight="600">
-            {{ 'A new order has been generated on your behalf.'|trans({}, 'EmailsBody', locale)|raw }}
+            {{ 'A new order has been generated on your behalf.'|trans({}, 'Emails.Body', locale)|raw }}
         </mj-text>
     </mj-column>
 </mj-section>
@@ -53,7 +53,7 @@
 <mj-section padding="15px 50px 40px">
     <mj-column background-color="#fefefe" border="1px solid #DFDFDF" padding="20px 0">
         <mj-text>
-            {{ 'Please go on <a href="{order_link}">{order_link}</a> to complete the payment.'|trans({}, 'EmailsBody', locale)|raw }}
+            {{ 'Please go on <a href="{order_link}">{order_link}</a> to complete the payment.'|trans({}, 'Emails.Body', locale)|raw }}
         </mj-text>
     </mj-column>
 </mj-section>

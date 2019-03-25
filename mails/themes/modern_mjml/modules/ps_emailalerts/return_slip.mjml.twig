@@ -1,6 +1,6 @@
 {% extends '@MjmlMailThemes/modern_mjml/components/order_layout.mjml.twig' %}
 
-{% block title %}{{ 'Return Slip'|trans({}, 'EmailsBody', locale) }}{% endblock %}
+{% block title %}{{ 'Return Slip'|trans({}, 'Emails.Body', locale) }}{% endblock %}
 
 {% block content %}
 <mj-section padding="0 25px">
@@ -10,7 +10,7 @@
       <!-- TITLE BEGINING -->
     </mj-raw>
     <mj-text padding-top="0" padding-bottom="20px" font-weight="600" font-size="20px">
-      {{ 'Hi,'|trans({}, 'EmailsBody', locale)|raw }}
+      {{ 'Hi,'|trans({}, 'Emails.Body', locale)|raw }}
     </mj-text>
     <mj-raw>
       <!-- TITLE ENDING -->
@@ -20,7 +20,7 @@
       <!-- H2 TITLE BEGINING -->
     </mj-raw>
     <mj-text padding-bottom="25px" padding-top="0px" font-size="16px">
-      {{ 'You have received a new return request for {shop_name}.'|trans({}, 'EmailsBody', locale)|raw }}
+      {{ 'You have received a new return request for {shop_name}.'|trans({}, 'Emails.Body', locale)|raw }}
     </mj-text>
     <mj-raw>
       <!-- H2 TITLE ENDING -->
@@ -48,7 +48,7 @@
 <mj-section padding="0 25px 0">
   <mj-column padding="0">
     <mj-text padding-bottom="0px" padding-top="0px" font-weight="600" font-size="16px">
-      {{ 'Return Details'|trans({}, 'EmailsBody', locale)|raw }}
+      {{ 'Return Details'|trans({}, 'Emails.Body', locale)|raw }}
     </mj-text>
   </mj-column>
 </mj-section>
@@ -62,10 +62,10 @@
 <mj-section padding="15px 50px 40px">
   <mj-column background-color="#fefefe" border="1px solid #DFDFDF" padding-top="10px" padding-bottom="10px">
     <mj-text font-size="16px">
-      <span class="label">{{ 'Order:'|trans({}, 'EmailsBody', locale)|raw }}</span> {order_name} {{ 'Placed on'|trans({}, 'EmailsBody', locale)|raw }} {date}
+      <span class="label">{{ 'Order:'|trans({}, 'Emails.Body', locale)|raw }}</span> {order_name} {{ 'Placed on'|trans({}, 'Emails.Body', locale)|raw }} {date}
     </mj-text>
     <mj-text padding-top="0" font-size="16px">
-      <span class="label">{{ 'Customer:'|trans({}, 'EmailsBody', locale)|raw }}</span> {firstname} {lastname}, ({email})
+      <span class="label">{{ 'Customer:'|trans({}, 'Emails.Body', locale)|raw }}</span> {firstname} {lastname}, ({email})
     </mj-text>
   </mj-column>
 </mj-section>
@@ -80,9 +80,9 @@
   <mj-column>
     <mj-table width="100%" padding-left="50px" padding-right="50px">
       <tr>
-        <th bgcolor="#FDFDFD" class="table-header">{{ 'Reference'|trans({}, 'EmailsBody', locale)|raw }}</th>
-        <th bgcolor="#FDFDFD" class="table-header">{{ 'Product'|trans({}, 'EmailsBody', locale)|raw }}</th>
-        <th bgcolor="#FDFDFD" class="table-header">{{ 'Quantity'|trans({}, 'EmailsBody', locale)|raw }}</th>
+        <th bgcolor="#FDFDFD" class="table-header">{{ 'Reference'|trans({}, 'Emails.Body', locale)|raw }}</th>
+        <th bgcolor="#FDFDFD" class="table-header">{{ 'Product'|trans({}, 'Emails.Body', locale)|raw }}</th>
+        <th bgcolor="#FDFDFD" class="table-header">{{ 'Quantity'|trans({}, 'Emails.Body', locale)|raw }}</th>
       </tr>
       <tr>
         <td colspan="3" style="border: 1px solid #DFDFDF;padding:10px 0 10px 10px">
@@ -110,7 +110,7 @@
               <td>
                 <p style="font-weight:600;">
                   <img src="{{ mailThemesUrl }}/modern_mjml/assets/baseline-location_on-24px.png" style="width:15px;margin-right:10px">
-                  {{ 'Delivery address'|trans({}, 'EmailsBody', locale)|raw }}
+                  {{ 'Delivery address'|trans({}, 'Emails.Body', locale)|raw }}
                 </p>
                 <p style="border: 1px solid #DFDFDF;background-color: #FEFEFE;padding:20px;font-size:14px">
                   {delivery_block_html}
@@ -129,7 +129,7 @@
               <td>
                 <p style="font-weight:600;">
                   <img src="{{ mailThemesUrl }}/modern_mjml/assets/baseline-credit_card-24px.png" style="width:25px;margin-right:10px">
-                  {{ 'Billing address'|trans({}, 'EmailsBody', locale)|raw }}
+                  {{ 'Billing address'|trans({}, 'Emails.Body', locale)|raw }}
                 </p>
                 <p style="border: 1px solid #DFDFDF;background-color: #FEFEFE;padding:20px;font-size:14px">
                   {invoice_block_html}
@@ -153,7 +153,7 @@
 <mj-section padding="0 50px 0" text-align="left">
   <mj-column padding="0">
     <mj-text padding="0" font-weight="600" font-size="16px">
-      {{ 'Customer message:'|trans({}, 'EmailsBody', locale)|raw }}
+      {{ 'Customer message:'|trans({}, 'Emails.Body', locale)|raw }}
     </mj-text>
   </mj-column>
 </mj-section>

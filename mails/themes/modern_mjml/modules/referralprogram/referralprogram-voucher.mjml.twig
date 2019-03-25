@@ -1,6 +1,6 @@
 {% extends '@MjmlMailThemes/modern_mjml/components/layout.mjml.twig' %}
 
-{% block title %}{{ 'Refferalprogram Voucher'|trans({}, 'EmailsBody', locale) }}{% endblock %}
+{% block title %}{{ 'Refferalprogram Voucher'|trans({}, 'Emails.Body', locale) }}{% endblock %}
 
 {% block content %}
 <mj-section padding="0 25px">
@@ -10,7 +10,7 @@
       <!-- TITLE BEGINING -->
     </mj-raw>
     <mj-text padding-top="0" padding-bottom="20px" font-weight="600" font-size="20px">
-      {{ 'Hi {firstname} {lastname},'|trans({}, 'EmailsBody', locale) }}
+      {{ 'Hi {firstname} {lastname},'|trans({}, 'Emails.Body', locale) }}
     </mj-text>
     <mj-raw>
       <!-- TITLE ENDING -->
@@ -37,7 +37,7 @@
 <mj-section padding="0 25px">
   <mj-column padding="0">
     <mj-text padding-bottom="0px" padding-top="0px" font-size="16px" font-weight="600">
-      {{ 'Sponsorship Program'|trans({}, 'EmailsBody', locale)|raw }}
+      {{ 'Sponsorship Program'|trans({}, 'Emails.Body', locale)|raw }}
     </mj-text>
   </mj-column>
 </mj-section>
@@ -51,11 +51,11 @@
 <mj-section padding="15px 50px 40px">
   <mj-column background-color="#fefefe" padding-top="10px" padding-bottom="10px" border="1px solid #DFDFDF">
     <mj-text font-size="14px">
-      {{ 'We have created a voucher in your name for referring a friend.'|trans({}, 'EmailsBody', locale)|raw }}<br/>
-      {{ 'Here is the code of your voucher:'|trans({}, 'EmailsBody', locale)|raw }} {voucher_num}{{ ', with an amount of'|trans({}, 'EmailsBody', locale)|raw }} <span class="label">{voucher_num}</span>
+      {{ 'We have created a voucher in your name for referring a friend.'|trans({}, 'Emails.Body', locale)|raw }}<br/>
+      {{ 'Here is the code of your voucher:'|trans({}, 'Emails.Body', locale)|raw }} {voucher_num}{{ ', with an amount of'|trans({}, 'Emails.Body', locale)|raw }} <span class="label">{voucher_num}</span>
     </mj-text>
     <mj-text>
-      {{ 'Simply copy/paste this code during the payment process for your next order.'|trans({}, 'EmailsBody', locale)|raw }}
+      {{ 'Simply copy/paste this code during the payment process for your next order.'|trans({}, 'Emails.Body', locale)|raw }}
     </mj-text>
   </mj-column>
 </mj-section>

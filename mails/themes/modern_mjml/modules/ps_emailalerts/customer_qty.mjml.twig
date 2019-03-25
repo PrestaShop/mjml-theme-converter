@@ -1,6 +1,6 @@
 {% extends '@MjmlMailThemes/modern_mjml/components/layout.mjml.twig' %}
 
-{% block title %}{{ 'Customer Quantity'|trans({}, 'EmailsBody', locale) }}{% endblock %}
+{% block title %}{{ 'Customer Quantity'|trans({}, 'Emails.Body', locale) }}{% endblock %}
 
 {% block content %}
 <mj-section padding="0 25px">
@@ -10,7 +10,7 @@
       <!-- TITLE BEGINING -->
     </mj-raw>
     <mj-text padding-top="0" padding-bottom="20px" font-weight="600" font-size="20px">
-      {{ 'Hi {firstname} {lastname},'|trans({}, 'EmailsBody', locale) }}
+      {{ 'Hi {firstname} {lastname},'|trans({}, 'Emails.Body', locale) }}
     </mj-text>
     <mj-raw>
       <!-- TITLE ENDING -->
@@ -38,7 +38,7 @@
 <mj-section padding="0 25px">
   <mj-column padding="0">
     <mj-text padding-bottom="0px" padding-top="0px" font-size="16px" font-weight="600">
-      {{ '{product} is now available.'|trans({}, 'EmailsBody', locale)|raw }}
+      {{ '{product} is now available.'|trans({}, 'Emails.Body', locale)|raw }}
     </mj-text>
   </mj-column>
 </mj-section>
@@ -53,10 +53,10 @@
 <mj-section padding="15px 50px 40px">
   <mj-column background-color="#fefefe" border="1px solid #DFDFDF" padding="20px 0">
     <mj-text>
-      {{ 'Good news, this item is back in stock!'|trans({}, 'EmailsBody', locale)|raw }}
+      {{ 'Good news, this item is back in stock!'|trans({}, 'Emails.Body', locale)|raw }}
     </mj-text>
     <mj-text padding-top="0px">
-      {{ 'Click on the following link to visit the product page and order it:'|trans({}, 'EmailsBody', locale)|raw }} <a href="{product_link}" target="_blank">{product}</a>
+      {{ 'Click on the following link to visit the product page and order it:'|trans({}, 'Emails.Body', locale)|raw }} <a href="{product_link}" target="_blank">{product}</a>
     </mj-text>
   </mj-column>
 </mj-section>

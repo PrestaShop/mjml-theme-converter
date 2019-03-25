@@ -1,6 +1,6 @@
 {% extends '@MjmlMailThemes/modern_mjml/components/layout.mjml.twig' %}
 
-{% block title %}{{ 'Contact Form'|trans({}, 'EmailsBody', locale) }}{% endblock %}
+{% block title %}{{ 'Contact Form'|trans({}, 'Emails.Body', locale) }}{% endblock %}
 
 {% block content %}
 <mj-section padding="0 25px">
@@ -10,7 +10,7 @@
             <!-- TITLE BEGINING -->
         </mj-raw>
         <mj-text padding-top="0" padding-bottom="20px" font-weight="600" font-size="20px">
-            {{ 'Hi {firstname} {lastname},'|trans({}, 'EmailsBody', locale) }}
+            {{ 'Hi {firstname} {lastname},'|trans({}, 'Emails.Body', locale) }}
         </mj-text>
         <mj-raw>
             <!-- TITLE ENDING -->
@@ -38,18 +38,18 @@
 <mj-section padding="15px 50px 40px">
     <mj-column background-color="#fefefe" border="1px solid #DFDFDF" padding="20px 0">
         <mj-text font-size="14px">
-            {{ 'Your message has been sent successfully, thank you for taking the time to write!'|trans({}, 'EmailsBody', locale)|raw }}
+            {{ 'Your message has been sent successfully, thank you for taking the time to write!'|trans({}, 'Emails.Body', locale)|raw }}
         </mj-text>
         <mj-text font-size="16px">
-            <span class="label">{{ 'Order ID #:'|trans({}, 'EmailsBody', locale)|raw }}</span>
+            <span class="label">{{ 'Order ID #:'|trans({}, 'Emails.Body', locale)|raw }}</span>
             <span> {order_name}</span>
         </mj-text>
         <mj-text padding-top="0px" font-size="16px">
-            <span class="label">{{ 'Product:'|trans({}, 'EmailsBody', locale)|raw }}</span>
+            <span class="label">{{ 'Product:'|trans({}, 'Emails.Body', locale)|raw }}</span>
             <span> {product_name}</span>
         </mj-text>
         <mj-text padding-top="0px" font-size="16px">
-            <span class="label">{{ 'Attached file:'|trans({}, 'EmailsBody', locale)|raw }}</span><span> {attached_file}</span>
+            <span class="label">{{ 'Attached file:'|trans({}, 'Emails.Body', locale)|raw }}</span><span> {attached_file}</span>
         </mj-text>
     </mj-column>
 </mj-section>
@@ -63,7 +63,7 @@
 <mj-section padding="0 25px">
     <mj-column>
         <mj-text padding-top="0" font-size="14px">
-            {{ 'We will reply as soon as possible.'|trans({}, 'EmailsBody', locale)|raw }}
+            {{ 'We will reply as soon as possible.'|trans({}, 'Emails.Body', locale)|raw }}
         </mj-text>
     </mj-column>
 </mj-section>

@@ -1,6 +1,6 @@
 {% extends '@MjmlMailThemes/modern_mjml/components/layout.mjml.twig' %}
 
-{% block title %}{{ 'Reply msg'|trans({}, 'EmailsBody', locale) }}{% endblock %}
+{% block title %}{{ 'Reply msg'|trans({}, 'Emails.Body', locale) }}{% endblock %}
 
 {% block content %}
 <mj-section padding="0 25px">
@@ -10,7 +10,7 @@
       <!-- TITLE BEGINING -->
     </mj-raw>
     <mj-text padding-top="0" padding-bottom="20px" font-weight="600" font-size="20px">
-      {{ 'Hi {firstname} {lastname},'|trans({}, 'EmailsBody', locale) }}
+      {{ 'Hi {firstname} {lastname},'|trans({}, 'Emails.Body', locale) }}
     </mj-text>
     <mj-raw>
       <!-- TITLE ENDING -->
@@ -52,8 +52,8 @@
 <mj-section padding="0 25px">
   <mj-column padding="0">
     <mj-text padding-top="0" padding-bottom="20px" >
-      {{ 'Please do not reply directly to this email, we will not receive it.'|trans({}, 'EmailsBody', locale)|raw }}
-      {{ 'In order to reply, click on the following link: <a href="{link}" target="_blank">{link}</a>'|trans({}, 'EmailsBody', locale)|raw }}
+      {{ 'Please do not reply directly to this email, we will not receive it.'|trans({}, 'Emails.Body', locale)|raw }}
+      {{ 'In order to reply, click on the following link: <a href="{link}" target="_blank">{link}</a>'|trans({}, 'Emails.Body', locale)|raw }}
     </mj-text>
   </mj-column>
 </mj-section>

@@ -1,6 +1,6 @@
 {% extends '@MjmlMailThemes/modern_mjml/components/layout.mjml.twig' %}
 
-{% block title %}{{ 'Voucher'|trans({}, 'EmailsBody', locale) }}{% endblock %}
+{% block title %}{{ 'Voucher'|trans({}, 'Emails.Body', locale) }}{% endblock %}
 
 {% block content %}
 <mj-section padding="0 25px">
@@ -9,7 +9,7 @@
       <!-- TITLE BEGINING -->
     </mj-raw>
     <mj-text padding-top="0" padding-bottom="20px" font-weight="600" font-size="20px">
-      {{ 'Hi {firstname} {lastname},'|trans({}, 'EmailsBody', locale) }}
+      {{ 'Hi {firstname} {lastname},'|trans({}, 'Emails.Body', locale) }}
     </mj-text>
     <mj-raw>
       <!-- TITLE ENDING -->
@@ -37,7 +37,7 @@
 <mj-section padding="0 25px">
   <mj-column padding="0">
     <mj-text padding-bottom="0px" padding-top="0px" font-size="16px" font-weight="600">
-      {{ 'Order ID {order_name}'|trans({}, 'EmailsBody', locale) }} - {{ 'Voucher code generated'|trans({}, 'EmailsBody', locale)|raw }}
+      {{ 'Order ID {order_name}'|trans({}, 'Emails.Body', locale) }} - {{ 'Voucher code generated'|trans({}, 'Emails.Body', locale)|raw }}
     </mj-text>
   </mj-column>
 </mj-section>
@@ -52,13 +52,13 @@
 <mj-section padding="15px 50px 40px">
   <mj-column background-color="#fefefe" border="1px solid #DFDFDF" padding-top="10px" padding-bottom="10px">
     <mj-text>
-      {{ 'We are pleased to inform you that a voucher has been generated in your name for order with the reference <span class="label">{order_name}</span>.'|trans({}, 'EmailsBody', locale)|raw }}
+      {{ 'We are pleased to inform you that a voucher has been generated in your name for order with the reference <span class="label">{order_name}</span>.'|trans({}, 'Emails.Body', locale)|raw }}
     </mj-text>
     <mj-text padding-top="0px">
-      {{ '<span class="label">VOUCHER CODE: {voucher_num}</span> in the amount of <span class="label">{voucher_amount}</span>'|trans({}, 'EmailsBody', locale)|raw }}
+      {{ '<span class="label">VOUCHER CODE: {voucher_num}</span> in the amount of <span class="label">{voucher_amount}</span>'|trans({}, 'Emails.Body', locale)|raw }}
     </mj-text>
     <mj-text padding-top="0px">
-      {{ 'In order to use it, just copy/paste this code during check out.'|trans({}, 'EmailsBody', locale)|raw }}
+      {{ 'In order to use it, just copy/paste this code during check out.'|trans({}, 'Emails.Body', locale)|raw }}
     </mj-text>
   </mj-column>
 </mj-section>

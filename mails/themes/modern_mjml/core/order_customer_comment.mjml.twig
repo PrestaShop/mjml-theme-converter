@@ -1,6 +1,6 @@
 {% extends '@MjmlMailThemes/modern_mjml/components/layout.mjml.twig' %}
 
-{% block title %}{{ 'Order customer comment'|trans({}, 'EmailsBody', locale) }}{% endblock %}
+{% block title %}{{ 'Order customer comment'|trans({}, 'Emails.Body', locale) }}{% endblock %}
 
 {% block content %}
 <mj-section padding="0 25px">
@@ -10,7 +10,7 @@
       <!-- TITLE BEGINING -->
     </mj-raw>
     <mj-text padding-top="0" padding-bottom="20px" font-weight="600" font-size="20px">
-      {{ 'Hi {firstname} {lastname},'|trans({}, 'EmailsBody', locale) }}
+      {{ 'Hi {firstname} {lastname},'|trans({}, 'Emails.Body', locale) }}
     </mj-text>
     <mj-raw>
       <!-- TITLE ENDING -->
@@ -38,7 +38,7 @@
 <mj-section padding="0 25px 0">
   <mj-column padding="0">
     <mj-text padding-bottom="0px" padding-top="0px" font-weight="600" font-size="16px">
-      {{ 'Message from customer'|trans({}, 'EmailsBody', locale)|raw }}
+      {{ 'Message from customer'|trans({}, 'Emails.Body', locale)|raw }}
     </mj-text>
   </mj-column>
 </mj-section>
@@ -52,10 +52,10 @@
 <mj-section padding="15px 50px 40px">
   <mj-column background-color="#fefefe" border="1px solid #DFDFDF" padding="20px 0">
     <mj-text>
-      {{ 'You have received a new message regarding order with the reference'|trans({}, 'EmailsBody', locale)|raw }} <span class="label">{order_name}</span>.
+      {{ 'You have received a new message regarding order with the reference'|trans({}, 'Emails.Body', locale)|raw }} <span class="label">{order_name}</span>.
     </mj-text>
     <mj-text>
-      <span style=" font-size:16px" class="label">{{ 'Customer:'|trans({}, 'EmailsBody', locale)|raw }}</span>
+      <span style=" font-size:16px" class="label">{{ 'Customer:'|trans({}, 'Emails.Body', locale)|raw }}</span>
       {firstrname} {lastname} ({email})
     </mj-text>
 
@@ -71,7 +71,7 @@
 <mj-section padding="0 50px 0" text-align="left">
   <mj-column padding="0">
     <mj-text padding="0" font-weight="600" font-size="16px">
-      {{ 'Customer message:'|trans({}, 'EmailsBody', locale)|raw }}
+      {{ 'Customer message:'|trans({}, 'Emails.Body', locale)|raw }}
     </mj-text>
   </mj-column>
 </mj-section>

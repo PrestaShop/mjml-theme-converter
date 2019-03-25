@@ -1,6 +1,6 @@
 {% extends '@MjmlMailThemes/modern_mjml/components/layout.mjml.twig' %}
 
-{% block title %}{{ 'Forward message'|trans({}, 'EmailsBody', locale) }}{% endblock %}
+{% block title %}{{ 'Forward message'|trans({}, 'Emails.Body', locale) }}{% endblock %}
 
 {% block content %}
 <mj-section padding="0 25px">
@@ -10,7 +10,7 @@
             <!-- TITLE BEGINING -->
         </mj-raw>
         <mj-text padding-top="0" padding-bottom="20px" font-weight="600" font-size="20px">
-            {{ 'Hi {firstname} {lastname},'|trans({}, 'EmailsBody', locale) }}
+            {{ 'Hi {firstname} {lastname},'|trans({}, 'Emails.Body', locale) }}
         </mj-text>
         <mj-raw>
             <!-- TITLE ENDING -->
@@ -38,7 +38,7 @@
 <mj-section padding="0 25px">
     <mj-column padding="0">
         <mj-text padding-bottom="0px" padding-top="0px" font-size="16px" font-weight="600">
-            {{ 'Customer Service - Discussion Forwarded'|trans({}, 'EmailsBody', locale)|raw }}
+            {{ 'Customer Service - Discussion Forwarded'|trans({}, 'Emails.Body', locale)|raw }}
         </mj-text>
     </mj-column>
 </mj-section>
@@ -53,13 +53,13 @@
     <mj-column background-color="#fefefe" padding-top="10px" padding-bottom="10px" border="1px solid #DFDFDF">
 
         <mj-text>
-            {{ '<span class="label">{employee}</span> wanted to forward this discussion to you.'|trans({}, 'EmailsBody', locale)|raw }}
+            {{ '<span class="label">{employee}</span> wanted to forward this discussion to you.'|trans({}, 'Emails.Body', locale)|raw }}
         </mj-text>
         <mj-text padding-top="0px">
-            <span class="label">{{ 'Discussion history:'|trans({}, 'EmailsBody', locale)|raw }}</span>&nbsp;<span>{messages}</span>
+            <span class="label">{{ 'Discussion history:'|trans({}, 'Emails.Body', locale)|raw }}</span>&nbsp;<span>{messages}</span>
         </mj-text>
         <mj-text padding-top="0px">
-            {{ '<span class="label">{employee}</span> added <span class="label">{comment}</span>'|trans({}, 'EmailsBody', locale)|raw }}
+            {{ '<span class="label">{employee}</span> added <span class="label">{comment}</span>'|trans({}, 'Emails.Body', locale)|raw }}
         </mj-text>
     </mj-column>
 </mj-section>
