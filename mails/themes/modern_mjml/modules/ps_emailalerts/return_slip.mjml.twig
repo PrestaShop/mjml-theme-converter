@@ -78,17 +78,23 @@
 </mj-raw>
 <mj-section>
   <mj-column>
-    <mj-table width="100%" padding-left="50px" padding-right="50px">
+    <mj-table css-class="products-table mail-alert" width="100%" padding-left="50px" padding-right="50px">
+      <colgroup>
+        <col span="1" style="width: 25%;">
+        <col span="1" style="width: 50%;">
+        <col span="1" style="width: 25%;">
+      </colgroup>
+
       <tr>
-        <th bgcolor="#FDFDFD" class="table-header">{{ 'Reference'|trans({}, 'Emails.Body', locale)|raw }}</th>
-        <th bgcolor="#FDFDFD" class="table-header">{{ 'Product'|trans({}, 'Emails.Body', locale)|raw }}</th>
-        <th bgcolor="#FDFDFD" class="table-header">{{ 'Quantity'|trans({}, 'Emails.Body', locale)|raw }}</th>
+        <th bgcolor="#FDFDFD">{{ 'Reference'|trans({}, 'Emails.Body', locale)|raw }}</th>
+        <th bgcolor="#FDFDFD">{{ 'Product'|trans({}, 'Emails.Body', locale)|raw }}</th>
+        <th bgcolor="#FDFDFD">{{ 'Quantity'|trans({}, 'Emails.Body', locale)|raw }}</th>
       </tr>
-      <tr>
-        <td colspan="3" style="border: 1px solid #DFDFDF;padding:10px 0 10px 10px">
-          {items}
-        </td>
-      </tr>
+
+      <mj-raw>
+        {items}
+      </mj-raw>
+
     </mj-table>
   </mj-column>
 </mj-section>
