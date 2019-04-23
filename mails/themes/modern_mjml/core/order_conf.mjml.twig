@@ -95,13 +95,11 @@
         <th bgcolor="#FDFDFD">{{ 'Total price'|trans({}, 'Emails.Body', locale)|raw }}</th>
       </tr>
 
-      <mj-raw>
-        <html-only>{products}</html-only> <span data-text-only="1">{products_txt}</span>
-      </mj-raw>
+      <html-only>{products}</html-only>
+      <txt-only>{products_txt}</txt-only>
 
-      <mj-raw>
-        <html-only>{discounts}</html-only> <span data-text-only="1">{discounts_txt}</span>
-      </mj-raw>
+      <html-only>{discounts}</html-only>
+      <txt-only>{discounts_txt}</txt-only>
 
       <tr class="order_summary">
         <td bgcolor="#FDFDFD" colspan="3" align="right">
@@ -208,7 +206,8 @@
                   {{ 'Delivery address'|trans({}, 'Emails.Body', locale)|raw }}
                 </p>
                 <p style="border: 1px solid #DFDFDF;background-color: #FEFEFE;padding:20px;font-size:14px">
-                  {delivery_block_html}
+                  <html-only>{delivery_block_html}</html-only>
+                  <txt-only>{delivery_block_txt}</txt-only>
                 </p>
               </td>
               <td width="10" class="space" style="padding:7px 0">&nbsp;</td>
@@ -227,7 +226,8 @@
                   {{ 'Billing address'|trans({}, 'Emails.Body', locale)|raw }}
                 </p>
                 <p style="border: 1px solid #DFDFDF;background-color: #FEFEFE;padding:20px;font-size:14px">
-                  {invoice_block_html}
+                  <html-only>{invoice_block_html}</html-only>
+                  <txt-only>{invoice_block_txt}</txt-only>
                 </p>
 
               </td>

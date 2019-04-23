@@ -32,6 +32,8 @@ use AppBundle\Mjml\MjmlConverter;
 use Symfony\Bundle\TwigBundle\TwigEngine;
 use Symfony\Component\DomCrawler\Crawler;
 use Symfony\Component\Filesystem\Filesystem;
+use DOMDocument;
+use DOMElement;
 
 class TwigTemplateConverter
 {
@@ -100,10 +102,10 @@ class TwigTemplateConverter
         $twigLayout = preg_replace('#%%title (.*)%%#', '{% block title %}\1{% endblock %}', $twigLayout);
 
         //Add the styles block in the header
-        $dom = new \DOMDocument();
+        $dom = new DOMDocument();
         $dom->loadHTML($twigLayout);
         $blockNode = $dom->createTextNode("    {% block styles %}\n    {% endblock %}\n");
-        /** @var \DOMElement $head */
+        /** @var DOMElement $head */
         $head = $dom->getElementsByTagName('head')->item(0);
         $head->appendChild($blockNode);
 
@@ -212,6 +214,42 @@ $layoutStyles
     }
 
     /**
+     * @param string $templateContent
+     * @param string $containerSelector
+     * @param string $mailType
+     *
+     * @return string
+     */
+    private function replaceContainerWithTwigCondition($templateContent, $containerSelector, $mailType)
+    {
+        $crawler = new Crawler($templateContent);
+
+        $crawler->filter($containerSelector)->each(function (Crawler $crawler) use ($mailType) {
+            foreach ($crawler as $node) {
+                $replaceNodes = [];
+                $replaceNodes[] = $node->ownerDocument->createTextNode('{% if templateType == \'' . $mailType . '\' %}'.PHP_EOL);
+                /** @var DOMElement $childNode */
+                foreach ($node->childNodes as $childNode) {
+                    $replaceNodes[] = $childNode->cloneNode(true);
+                }
+                $replaceNodes[] = $node->ownerDocument->createTextNode(PHP_EOL . '{% endif %}');
+
+                foreach ($replaceNodes as $childNode) {
+                    $node->parentNode->insertBefore($childNode, $node);
+                }
+                $node->parentNode->removeChild($node);
+            }
+        });
+
+        $filteredContent = '';
+        foreach ($crawler as $domElement) {
+            $filteredContent .= $domElement->ownerDocument->saveHTML($domElement);
+        }
+
+        return $filteredContent;
+    }
+
+    /**
      * @param string $htmlContent
      * @param string $selector
      *
@@ -219,6 +257,9 @@ $layoutStyles
      */
     private function extractHtml($htmlContent, $selector, $nodeIndex = null)
     {
+        $htmlContent = $this->replaceContainerWithTwigCondition($htmlContent, 'html-only', 'html');
+        $htmlContent = $this->replaceContainerWithTwigCondition($htmlContent, 'txt-only', 'txt');
+
         //MJML returns a full html template, get only the body content
         $crawler = new Crawler($htmlContent);
         /** @var Crawler $filteredCrawler */
@@ -229,7 +270,7 @@ $layoutStyles
             $nodeList = $filteredCrawler->getNode($nodeIndex)->childNodes;
         }
         $extractedHtml = '';
-        /** @var \DOMElement $childNode */
+        /** @var DOMElement $childNode */
         foreach ($nodeList as $childNode) {
             $extractedHtml .= $childNode->ownerDocument->saveHTML($childNode);
         }
