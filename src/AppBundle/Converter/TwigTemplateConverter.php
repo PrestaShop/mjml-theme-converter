@@ -288,7 +288,8 @@ $layoutStyles
     private function convertMjml($templateName, $templateContent)
     {
         //Print the conversion layout in a file and renders it (Twig needs a file as input)
-        $conversionTemplatePath = $this->tempDir.'/'.$templateName;
+        //Use content md5 as output name to avoid twig caching templates with same name (can happen with modules)
+        $conversionTemplatePath = $this->tempDir.'/'.md5($templateContent);
         if (!is_dir($this->tempDir)) {
             $this->fileSystem->mkdir($this->tempDir);
         }
