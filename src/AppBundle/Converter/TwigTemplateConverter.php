@@ -130,7 +130,7 @@ $this->templateContent
 {% block footer %}{% endblock %}
 ";
 
-        $convertedLayout = $this->convertLayout($templateName, $mjmlTheme, $newTheme);
+        $convertedLayout = $this->convertLayout($mjmlTheme, $newTheme);
 
         return $convertedLayout['content'];
     }
@@ -142,7 +142,6 @@ $this->templateContent
         }
 
         $this->templateContent = file_get_contents($mjmlTemplatePath);
-        $templateName = basename($mjmlTemplatePath);
 
         $this->templateContent .= "
         {% block header %}{% endblock %}
@@ -154,7 +153,7 @@ $this->templateContent
         $twigLayout = $this->convertTwigLayoutPath($mjmlLayout, $newTheme);
         $layoutTile = $this->getLayoutTitle();
 
-        $convertedLayout = $this->convertLayout($templateName, $mjmlTheme, $newTheme);
+        $convertedLayout = $this->convertLayout($mjmlTheme, $newTheme);
         $layoutContent = $convertedLayout['content'];
         $layoutStyles = $convertedLayout['styles'];
 
@@ -174,16 +173,15 @@ $layoutStyles
     }
 
     /**
-     * @param string $templateName
      * @param string $mjmlTheme
      * @param string $newTheme
      *
      * @return array
      * @throws \Twig\Error\Error
      */
-    private function convertLayout($templateName, $mjmlTheme, $newTheme)
+    private function convertLayout($mjmlTheme, $newTheme)
     {
-        $convertedTemplate = $this->convertMjml($templateName, $this->templateContent);
+        $convertedTemplate = $this->convertMjml($this->templateContent);
 
         //MJML returns a full html template, get only the body content
         $innerHtml = $this->extractHtml($convertedTemplate, '.wrapper-container table tr td', 0);
@@ -279,13 +277,12 @@ $layoutStyles
     }
 
     /**
-     * @param string $templateName
      * @param string $templateContent
      *
      * @return string|null
      * @throws \Twig\Error\Error
      */
-    private function convertMjml($templateName, $templateContent)
+    private function convertMjml($templateContent)
     {
         //Print the conversion layout in a file and renders it (Twig needs a file as input)
         //Use content md5 as output name to avoid twig caching templates with same name (can happen with modules)
