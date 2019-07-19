@@ -52,6 +52,9 @@
     <mj-text>
       {{ 'Your order with the reference <span class="label">{order_name}</span> from <span class="label">{shop_name}</span> has been canceled by the merchant.'|trans({}, 'Emails.Body', locale)|raw }}
     </mj-text>
+    <mj-text>
+      {{ 'Go to your customer account to learn more about it.'|trans({}, 'Emails.Body', locale)|raw }}
+    </mj-text>
   </mj-column>
 </mj-section>
 <mj-raw>
@@ -61,20 +64,6 @@
 <mj-raw>
   <!-- FIRST TEXT BEGINING -->
 </mj-raw>
-<mj-section padding="0 25px 20px">
-  <mj-column>
-    <mj-text>
-      {{ 'Go to your customer account to learn more about it.'|trans({}, 'Emails.Body', locale)|raw }}
-    </mj-text>
-  </mj-column>
-</mj-section>
-<mj-raw>
-  <!-- FIRST TEXT ENDING -->
-</mj-raw>
-
-<mj-raw>
-  <!-- SECOND TEXT BEGINING -->
-</mj-raw>
 <mj-section padding="0 25px">
   <mj-column>
     <mj-text padding-top="0">
@@ -83,7 +72,7 @@
   </mj-column>
 </mj-section>
 <mj-raw>
-  <!-- SECOND TEXT ENDING -->
+  <!-- FIRST TEXT ENDING -->
 </mj-raw>
 {% endblock %}
 
