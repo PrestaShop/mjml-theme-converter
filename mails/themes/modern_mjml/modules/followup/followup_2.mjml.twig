@@ -47,7 +47,7 @@
 <mj-section padding="15px 50px 40px">
     <mj-column background-color="#fefefe" border="1px solid #DFDFDF" padding="20px 0">
         <mj-text>
-            {{ 'We are pleased to offer you a discount of <span class="label">{amount}%</span> off your next order. And this offer is valid for <span class="label">{days}</span> days, so do not wait any longer!'|trans({}, 'Emails.Body', locale)|raw }}
+            {{ 'We are pleased to offer you a discount of [bold]{amount}%[/bold] off your next order. And this offer is valid for [bold]{days}[/bold] days, so do not wait any longer!'|trans({'[bold]': '<span class="label">', '[/bold]': '</span>'}, 'Emails.Body', locale)|raw }}
         </mj-text>
 
         <mj-text font-size="14px">

@@ -54,7 +54,7 @@
 <mj-section padding="15px 50px 40px">
   <mj-column background-color="#fefefe" border="1px solid #DFDFDF" padding-top="10px" padding-bottom="10px">
     <mj-text>
-      {{ 'Your order with the reference <span class="label">{order_name}</span> is on its way.'|trans({}, 'Emails.Body', locale)|raw }}
+      {{ 'Your order with the reference [bold]{order_name}[/bold] is on its way.'|trans({'[bold]': '<span class="label">', '[/bold]': '</span>'}, 'Emails.Body', locale)|raw }}
     </mj-text>
     <mj-text>
       {{ 'You can track your package using the following link:'|trans({}, 'Emails.Body', locale)|raw }} <a href="{followup}" target="_blank" style="color:#25B9D7; font-weight:600;">{followup}</a>

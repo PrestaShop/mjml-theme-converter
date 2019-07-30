@@ -59,7 +59,7 @@
             {{ 'Your cart has been saved, you can go back to your order on our shop:'|trans({}, 'Emails.Body', locale)|raw }} <a href="{shop_url}" target="_blank">{shop_url}</a>
         </mj-text>
         <mj-text padding-top="0px">
-            {{ 'We are pleased to offer you a discount of {amount}% off your next order. And this offer is valid for <span class="label">{days}</span> days, so do not wait any longer!'|trans({}, 'Emails.Body', locale)|raw }}
+            {{ 'We are pleased to offer you a discount of [bold]{amount}%[/bold] off your next order. And this offer is valid for [bold]{days}[/bold] days, so do not wait any longer!'|trans({'[bold]': '<span class="label">', '[/bold]': '</span>'}, 'Emails.Body', locale)|raw }}
         </mj-text>
     </mj-column>
 </mj-section>

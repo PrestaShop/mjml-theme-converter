@@ -52,7 +52,7 @@
 <mj-section padding="15px 50px 40px">
   <mj-column background-color="#fefefe" border="1px solid #DFDFDF" padding="20px 0">
     <mj-text>
-      {{ 'You have received a new message from <span class="label">{shop_name}</span> regarding order with the reference <span class="label">{order_name}</span>.'|trans({}, 'Emails.Body', locale)|raw }}
+      {{ 'You have received a new message from [bold]{shop_name}[/bold] regarding order with the reference <span class="label">{order_name}</span>.'|trans({'[bold]': '<span class="label">', '[/bold]': '</span>'}, 'Emails.Body', locale)|raw }}
     </mj-text>
   </mj-column>
 </mj-section>

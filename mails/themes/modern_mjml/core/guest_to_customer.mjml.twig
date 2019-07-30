@@ -53,7 +53,7 @@
 <mj-section padding="15px 50px 40px">
     <mj-column background-color="#fefefe" border="1px solid #DFDFDF" padding="20px 0">
         <mj-text>
-            {{ 'Congratulations, your guest account for <span class="label">{shop_name}</span> has been turned into a customer account!'|trans({}, 'Emails.Body', locale)|raw }}
+            {{ 'Congratulations, your guest account for [bold]{shop_name}[/bold] has been turned into a customer account!'|trans({'[bold]': '<span class="label">', '[/bold]': '</span>'}, 'Emails.Body', locale)|raw }}
         </mj-text>
         <mj-text padding-top="0px">
             <span class="label" >{{ 'Email address:'|trans({}, 'Emails.Body', locale)|raw }}</span>&nbsp;<span style="color:#25B9D7;font-weight:600">{email}</span>

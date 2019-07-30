@@ -20,7 +20,7 @@
             <!-- H2 TITLE BEGINING -->
         </mj-raw>
         <mj-text padding-bottom="25px" padding-top="0px" font-size="16px">
-            {{ 'Thank you for your order with the reference {order_name} from <span class="label">{shop_name}</span>'|trans({}, 'Emails.Body', locale)|raw }}
+            {{ 'Thank you for your order with the reference {order_name} from [bold]{shop_name}[/bold]'|trans({'[bold]': '<span class="label">', '[/bold]': '</span>'}, 'Emails.Body', locale)|raw }}
         </mj-text>
         <mj-raw>
             <!-- H2 TITLE ENDING -->
@@ -61,7 +61,7 @@
 <mj-section padding="15px 50px 40px">
     <mj-column background-color="#fefefe" border="1px solid #DFDFDF" padding-top="10px" padding-bottom="10px">
         <mj-text>
-            {{ 'You have <span class="label">{nbProducts}</span> product(s) now available for download using the following link(s):'|trans({}, 'Emails.Body', locale)|raw }}
+            {{ 'You have [bold]{nbProducts}[/bold] product(s) now available for download using the following link(s):'|trans({'[bold]': '<span class="label">', '[/bold]': '</span>'}, 'Emails.Body', locale)|raw }}
         </mj-text>
         <mj-text>
             {virtualProducts}

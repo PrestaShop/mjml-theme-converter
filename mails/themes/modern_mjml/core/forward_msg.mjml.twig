@@ -53,13 +53,13 @@
     <mj-column background-color="#fefefe" padding-top="10px" padding-bottom="10px" border="1px solid #DFDFDF">
 
         <mj-text>
-            {{ '<span class="label">{employee}</span> wanted to forward this discussion to you.'|trans({}, 'Emails.Body', locale)|raw }}
+            {{ '[bold]{employee}[/bold] wanted to forward this discussion to you.'|trans({'[bold]': '<span class="label">', '[/bold]': '</span>'}, 'Emails.Body', locale)|raw }}
         </mj-text>
         <mj-text padding-top="0px">
             <span class="label">{{ 'Discussion history:'|trans({}, 'Emails.Body', locale)|raw }}</span>&nbsp;<span>{messages}</span>
         </mj-text>
         <mj-text padding-top="0px">
-            {{ '<span class="label">{employee}</span> added <span class="label">{comment}</span>'|trans({}, 'Emails.Body', locale)|raw }}
+            {{ '[bold]{employee}[/bold] added [bold]{comment}[/bold]'|trans({'[bold]': '<span class="label">', '[/bold]': '</span>'}, 'Emails.Body', locale)|raw }}
         </mj-text>
     </mj-column>
 </mj-section>
