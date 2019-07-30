@@ -53,7 +53,7 @@
       {{ 'Your order with the reference [bold]{order_name}[/bold] from [bold]{shop_name}[/bold] has been canceled by the merchant.'|trans({'[bold]': '<span class="label">', '[/bold]': '</span>'}, 'Emails.Body', locale)|raw }}
     </mj-text>
     <mj-text>
-      {{ 'Go to your customer account to learn more about it.'|trans({}, 'Emails.Body', locale)|raw }}
+      {{ 'Go to your customer account to learn more about it.'|trans({}, 'Emails.Body', locale) }}
     </mj-text>
   </mj-column>
 </mj-section>
