@@ -20,7 +20,7 @@
       <!-- H2 TITLE BEGINING -->
     </mj-raw>
     <mj-text padding-bottom="25px" padding-top="0px" font-size="16px">
-      {{ 'A new order was placed on [bold]{shop_name}[/bold] by the following customer:'|trans({'[bold]': '<span class="label">', '[/bold]': '</span>'}, 'Emails.Body', locale)|raw }}
+      {{ 'A new order was placed on [1]{shop_name}[/1] by the following customer:'|trans({'[1]': '<span class="label">', '[/1]': '</span>'}, 'Emails.Body', locale)|raw }}
       {firstname} {lastname} ({email})
     </mj-text>
     <mj-raw>

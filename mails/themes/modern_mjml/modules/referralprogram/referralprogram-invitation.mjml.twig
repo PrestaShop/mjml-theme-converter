@@ -38,11 +38,11 @@
 <mj-section padding="15px 50px 40px">
   <mj-column background-color="#fefefe" border="1px solid #DFDFDF" padding="20px 0">
     <mj-text>
-      {{ 'Your friend [bold]{firstname} {lastname}[/bold] wants to refer you on <a href="{shop_url}" target="_blank">{shop_name}</a>!'|trans({'[bold]': '<span class="label">', '[/bold]': '</span>'}, 'Emails.Body', locale)|raw }}
+      {{ 'Your friend [1]{firstname} {lastname}[/1] wants to refer you on <a href="{shop_url}" target="_blank">{shop_name}</a>!'|trans({'[1]': '<span class="label">', '[/1]': '</span>'}, 'Emails.Body', locale)|raw }}
     </mj-text>
     <mj-text padding-top="0px">
-      {{ 'We are pleased to offer you a voucher worth [bold]{discount}[/bold] that you can use on your next order.'|trans({'[bold]': '<span class="label">', '[/bold]': '</span>'}, 'Emails.Body', locale)|raw }}
-      {{ 'Get referred and earn a discount voucher of [bold]{discount}[/bold]!'|trans({'[bold]': '<span class="label">', '[/bold]': '</span>'}, 'Emails.Body', locale)|raw }}
+      {{ 'We are pleased to offer you a voucher worth [1]{discount}[/1] that you can use on your next order.'|trans({'[1]': '<span class="label">', '[/1]': '</span>'}, 'Emails.Body', locale)|raw }}
+      {{ 'Get referred and earn a discount voucher of [1]{discount}[/1]!'|trans({'[1]': '<span class="label">', '[/1]': '</span>'}, 'Emails.Body', locale)|raw }}
       <p>
         <a href="{link}" class="light" target="_blank">{{ 'It\'s very easy to sign up, just click here!'|trans({}, 'Emails.Body', locale)|raw }}</a>
       </p>
