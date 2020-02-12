@@ -2377,20 +2377,21 @@
                 }
             ],
             "description": "This bundle generates code for you",
+            "abandoned": true,
             "time": "2017-12-07T15:36:41+00:00"
         },
         {
             "name": "symfony/phpunit-bridge",
-            "version": "v3.4.23",
+            "version": "v3.4.26",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/phpunit-bridge.git",
-                "reference": "b539f37134c10edbf85dc0567be4151c56870f5e"
+                "reference": "a43a2f6c465a2d99635fea0addbebddc3864ad97"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/phpunit-bridge/zipball/b539f37134c10edbf85dc0567be4151c56870f5e",
-                "reference": "b539f37134c10edbf85dc0567be4151c56870f5e",
+                "url": "https://api.github.com/repos/symfony/phpunit-bridge/zipball/a43a2f6c465a2d99635fea0addbebddc3864ad97",
+                "reference": "a43a2f6c465a2d99635fea0addbebddc3864ad97",
                 "shasum": ""
             },
             "require": {
@@ -2442,7 +2443,7 @@
             ],
             "description": "Symfony PHPUnit Bridge",
             "homepage": "https://symfony.com",
-            "time": "2019-02-16T18:50:26+00:00"
+            "time": "2019-04-16T09:03:16+00:00"
         }
     ],
     "aliases": [],
