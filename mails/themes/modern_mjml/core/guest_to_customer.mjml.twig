@@ -56,7 +56,8 @@
             {{ 'Congratulations, your guest account for [1]{shop_name}[/1] has been turned into a customer account!'|trans({'[1]': '<span class="label">', '[/1]': '</span>'}, 'Emails.Body', locale)|raw }}
         </mj-text>
         <mj-text padding-top="0px">
-            <span class="label">{{ 'Email address:'|trans({}, 'Emails.Body', locale)|raw }}</span>&nbsp;<span style="color:#25B9D7;font-weight:600">{email}</span>
+            <span class="label">{{ 'Email address:'|trans({}, 'Emails.Body', locale)|raw }}</span>&nbsp;<span style="color:#25B9D7;font-weight:600">{email}</span><br><br>
+            {{ 'Click on the following link to set up your password:'|trans({}, 'Emails.Body', locale)|raw }} <br/> <a href="{url}">{url}</a>
         </mj-text>
     </mj-column>
 </mj-section>
