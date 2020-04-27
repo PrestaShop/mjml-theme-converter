@@ -109,7 +109,12 @@ class TwigTemplateConverter
         $head = $dom->getElementsByTagName('head')->item(0);
         $head->appendChild($blockNode);
 
-        return $dom->saveHTML();
+        $html = $dom->saveHTML();
+
+        // Since DOMDocument::saveHTML converts special characters into special HTML characters we revert them back
+        $html = htmlspecialchars_decode($html);
+
+        return $html;
     }
 
     public function convertComponentTemplate($mjmlTemplatePath, $mjmlTheme, $newTheme)
@@ -244,6 +249,9 @@ $layoutStyles
             $filteredContent .= $domElement->ownerDocument->saveHTML($domElement);
         }
 
+        // Since DOMDocument::saveHTML converts special characters into special HTML characters we revert them back
+        $filteredContent = htmlspecialchars_decode($filteredContent);
+
         return $filteredContent;
     }
 
@@ -272,6 +280,9 @@ $layoutStyles
         foreach ($nodeList as $childNode) {
             $extractedHtml .= $childNode->ownerDocument->saveHTML($childNode);
         }
+
+        // Since DOMDocument::saveHTML converts special characters into special HTML characters we revert them back
+        $extractedHtml = htmlspecialchars_decode($extractedHtml);
 
         return $extractedHtml;
     }
