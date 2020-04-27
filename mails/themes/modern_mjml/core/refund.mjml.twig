@@ -60,7 +60,7 @@
 </mj-raw>
 <mj-section padding="0 25px 20px">
   <mj-column>
-    <mj-text>{{ 'Follow your order and download your invoice on our shop, go to the <a href="{history_url}" target="_blank">Order history and details</a> section of your customer account.'|trans({}, 'Emails.Body', locale)|raw }}</mj-text>
+    <mj-text>{{ 'Follow your order and download your invoice on our shop, go to the <a href="{history_url}" target="_blank">%order_history_label%</a> section of your customer account.'|trans({'%order_history_label%': 'Order history and details'|trans({}, 'Shop.Theme.Customeraccount', locale)}, 'Emails.Body', locale)|raw }}</mj-text>
   </mj-column>
 </mj-section>
 <mj-raw>
@@ -73,7 +73,7 @@
 <mj-section padding="0 25px">
   <mj-column>
     <mj-text padding-top="0">
-      {{ 'If you have a guest account, you can follow your order via the <a href="{guest_tracking_url}" target="_blank">Guest Tracking</a> section on our shop.'|trans({}, 'Emails.Body', locale)|raw }}
+      {{ 'If you have a guest account, you can follow your order via the <a href="{guest_tracking_url}" target="_blank">%guest_tracking_label%</a> section on our shop.'|trans({'%guest_tracking_label%': 'Guest Tracking'|trans({}, 'Shop.Theme.Customeraccount', locale)}, 'Emails.Body', locale)|raw }}
     </mj-text>
   </mj-column>
 </mj-section>
