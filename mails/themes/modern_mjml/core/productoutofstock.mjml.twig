@@ -37,7 +37,7 @@
 <mj-section padding="15px 50px 40px">
   <mj-column background-color="#fefefe" border="1px solid #DFDFDF" padding-top="10px" padding-bottom="10px">
     <mj-text>
-      {{ 'There are now less than [1]{last_qty}[/1] items in stock.'|trans({'[1]': '<span class="label">', '[/1]': '</span>'}, 'Emails.Body', locale)|raw }}
+      {{ 'There are now less than [1]{last_qty}[/1] of [1]{product}[/1] in stock.'|trans({'[1]': '<span class="label">', '[/1]': '</span>'}, 'Emails.Body', locale)|raw }}
     </mj-text>
     <mj-text>
       <span style="font-weight:700;font-size:16px">{{ 'Remaining stock:'|trans({}, 'Emails.Body', locale)|raw }}</span> {qty}
