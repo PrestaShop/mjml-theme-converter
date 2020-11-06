@@ -95,11 +95,25 @@
         <th bgcolor="#FDFDFD">{{ 'Total price'|trans({}, 'Emails.Body', locale)|raw }}</th>
       </tr>
 
-      <html-only>{products}</html-only>
-      <txt-only>{products_txt}</txt-only>
+      <!-- delete -->
+      <tr>
+        <td style="border:1px solid #D6D4D4;padding:7px 0;text-align:center;" colspan="5">
+          <!-- /delete -->
+          <html-only>{products}</html-only>
+          <txt-only>{products_txt}</txt-only>
+          <!-- delete -->
+        </td>
+      </tr>
 
-      <html-only>{discounts}</html-only>
-      <txt-only>{discounts_txt}</txt-only>
+      <tr class="conf_body">
+        <td bgcolor="#f8f8f8" colspan="5" style="border:1px solid #D6D4D4;color:#333;padding:7px 0;text-align:center;">
+          <!-- /delete -->
+          <html-only>{discounts}</html-only>
+          <txt-only>{discounts_txt}</txt-only>
+          <!-- delete -->
+        </td>
+      </tr>
+      <!-- /delete -->
 
       <tr class="order_summary">
         <td bgcolor="#FDFDFD" colspan="3" align="right">
