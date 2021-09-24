@@ -30,6 +30,10 @@ services:
         arguments:
             $engine: '@templating.engine.twig'
 
+    AppBundle\Mjml\MjmlConverter:
+        arguments:
+            $useNpm: '%mjml_use_npm%'
+
     # controllers are imported separately to make sure they're public
     # and have a tag that allows actions to type-hint services
     #AppBundle\Controller\:
