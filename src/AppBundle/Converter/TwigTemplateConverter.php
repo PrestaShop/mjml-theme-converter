@@ -117,7 +117,7 @@ class TwigTemplateConverter
         return $html;
     }
 
-    public function convertComponentTemplate($mjmlTemplatePath, $mjmlTheme, $newTheme)
+    public function convertComponentTemplate($mjmlTemplatePath, $mjmlTheme, $newTheme, $isWrapped)
     {
         if (!file_exists($mjmlTemplatePath)) {
             throw new FileNotFoundException(sprintf('Could not find mjml template %s', $mjmlTemplatePath));
@@ -135,7 +135,7 @@ $this->templateContent
 {% block footer %}{% endblock %}
 ";
 
-        $convertedLayout = $this->convertLayout($mjmlTheme, $newTheme);
+        $convertedLayout = $this->convertLayout($mjmlTheme, $newTheme, $isWrapped);
 
         return $convertedLayout['content'];
     }
@@ -158,7 +158,7 @@ $this->templateContent
         $twigLayout = $this->convertTwigLayoutPath($mjmlLayout, $newTheme);
         $layoutTile = $this->getLayoutTitle();
 
-        $convertedLayout = $this->convertLayout($mjmlTheme, $newTheme);
+        $convertedLayout = $this->convertLayout($mjmlTheme, $newTheme, true);
         $layoutContent = $convertedLayout['content'];
         $layoutStyles = $convertedLayout['styles'];
 
@@ -184,7 +184,7 @@ $layoutStyles
      * @return array
      * @throws \Twig\Error\Error
      */
-    private function convertLayout($mjmlTheme, $newTheme)
+    private function convertLayout($mjmlTheme, $newTheme, $isWrapped)
     {
         $convertedTemplate = $this->convertMjml($this->templateContent);
 
@@ -205,6 +205,13 @@ $layoutStyles
 
         //Update assets path
         $innerHtml = preg_replace('#'.$mjmlTheme.'/assets/#', $newTheme.'/assets/', $innerHtml);
+
+        //if mj-section is inside mj-wrapper, we need to remove the conditional `if mso table`
+        if ($isWrapped) {
+            $innerHtml = preg_replace('#^<!--\[if mso \| IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0">#', '<!--[if mso | IE]>', $innerHtml);
+            $innerHtml = preg_replace('#^<!--\[if mso \| IE]><!\[endif]-->#', '', $innerHtml);
+            $innerHtml = preg_replace('#<!--\[if mso \| IE]></table><!\[endif]-->$#', '', $innerHtml);
+        }
 
         //Each converted template has its own style rules, so we need to extract them as well
         $templateStyles = $this->extractHtml($convertedTemplate, 'head style');

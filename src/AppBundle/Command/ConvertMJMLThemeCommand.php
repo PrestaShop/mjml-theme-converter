@@ -98,8 +98,9 @@ class ConvertMJMLThemeCommand extends Command
                     $output->writeln('Converting layout '.$mjmlFile->getRelativePathname());
                     $twigTemplate = $this->converter->convertLayoutTemplate($mjmlFile->getRealPath(), $mjmlTheme, $twigTheme);
                 } else {
+                    $isWrapped = 'components' . $path_separator . 'footer.mjml.twig' !== $mjmlFile->getRelativePathname();
                     $output->writeln('Converting component '.$mjmlFile->getRelativePathname());
-                    $twigTemplate = $this->converter->convertComponentTemplate($mjmlFile->getRealPath(), $mjmlTheme, $twigTheme);
+                    $twigTemplate = $this->converter->convertComponentTemplate($mjmlFile->getRealPath(), $mjmlTheme, $twigTheme, $isWrapped);
                 }
             } else {
                 $output->writeln('Converting template '.$mjmlFile->getRelativePathname());
