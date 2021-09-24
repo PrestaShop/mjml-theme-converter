@@ -91,9 +91,10 @@ class ConvertMJMLThemeCommand extends Command
         /** @var SplFileInfo $mjmlFile */
         foreach ($finder as $mjmlFile) {
             //Ignore components file for now
+            $path_separator = preg_match('#/#', $mjmlFile->getRelativePathname()) ? '/' : '\\';
             if (preg_match('/^components/', $mjmlFile->getRelativePathname())) {
-                if ('components/layout.mjml.twig' == $mjmlFile->getRelativePathname() ||
-                    'components/order_layout.mjml.twig' == $mjmlFile->getRelativePathname()) {
+                if ('components' . $path_separator . 'layout.mjml.twig' == $mjmlFile->getRelativePathname() ||
+                    'components' . $path_separator . 'order_layout.mjml.twig' == $mjmlFile->getRelativePathname()) {
                     $output->writeln('Converting layout '.$mjmlFile->getRelativePathname());
                     $twigTemplate = $this->converter->convertLayoutTemplate($mjmlFile->getRealPath(), $mjmlTheme, $twigTheme);
                 } else {
