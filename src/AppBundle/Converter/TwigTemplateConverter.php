@@ -104,10 +104,14 @@ class TwigTemplateConverter
         //Add the styles block in the header
         $dom = new DOMDocument();
         $dom->loadHTML($twigLayout);
-        $blockNode = $dom->createTextNode("    {% block styles %}\n    {% endblock %}\n");
+        $blockStyleStart = $dom->createTextNode("{% block styles %}\n  ");
+        $blockStyleEnd = $dom->createTextNode("  {% endblock %}\n");
         /** @var DOMElement $head */
         $head = $dom->getElementsByTagName('head')->item(0);
-        $head->appendChild($blockNode);
+        /** @var DOMElement $style First style tag in head */
+        $style = $head->getElementsByTagName('style')->item(0);
+        $head->insertBefore($blockStyleStart, $style);
+        $head->appendChild($blockStyleEnd);
 
         $html = $dom->saveHTML();
 
@@ -171,7 +175,6 @@ $layoutContent
 {% endblock %}
 
 {% block styles %}
-{{ parent() }}
 $layoutStyles
 {% endblock %}
 ";
