@@ -15,7 +15,7 @@ To convert a theme use this command:
 On Windows use
 
 ```
-php /bin/console prestashop:mail:convert-mjml modern_mjml {twig_theme_path}
+php bin/console prestashop:mail:convert-mjml modern_mjml {twig_theme_path}
 ```
 
 `twig_theme_path` is the output folder (it must exist before running the command). It is an absolute path or a path

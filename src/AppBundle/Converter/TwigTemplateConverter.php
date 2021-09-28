@@ -211,9 +211,9 @@ $layoutStyles
 
         //if mj-section is inside mj-wrapper, we need to remove the conditional `if mso table`
         if ($isWrapped) {
-            $innerHtml = preg_replace('#^<!--\[if mso \| IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0">#', '<!--[if mso | IE]>', $innerHtml);
-            $innerHtml = preg_replace('#^<!--\[if mso \| IE]><!\[endif]-->#', '', $innerHtml);
-            $innerHtml = preg_replace('#<!--\[if mso \| IE]></table><!\[endif]-->$#', '', $innerHtml);
+            $innerHtml = preg_replace('/^<!--\[if mso \| IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0">/', '<!--[if mso | IE]>', $innerHtml);
+            $innerHtml = preg_replace('/^<!--\[if mso \| IE]><!\[endif]-->/', '', $innerHtml);
+            $innerHtml = preg_replace('/<!--\[if mso \| IE]><\/table><!\[endif]-->$/', '', $innerHtml);
         }
 
         //Each converted template has its own style rules, so we need to extract them as well

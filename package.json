@@ -12,14 +12,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/lmeyer1/mjml-theme-converter.git"
+    "url": "git+https://github.com/Prestashop/mjml-theme-converter.git"
   },
   "author": "",
-  "license": "ISC",
+  "license": "OSL https://github.com/PrestaShop/mjml-theme-converter/blob/master/LICENSE.md",
   "bugs": {
-    "url": "https://github.com/lmeyer1/mjml-theme-converter/issues"
+    "url": "https://github.com/Prestashop/mjml-theme-converter/issues"
   },
-  "homepage": "https://github.com/lmeyer1/mjml-theme-converter#readme",
+  "homepage": "https://github.com/Prestashop/mjml-theme-converter#readme",
   "dependencies": {
     "mjml": "^4.10.3"
   }

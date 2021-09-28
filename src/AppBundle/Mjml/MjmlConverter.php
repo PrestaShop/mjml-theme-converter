@@ -141,7 +141,6 @@ class MjmlConverter
     private function getMjmlBinaryPath()
     {
         if ($this->useNpm) {
-
             return 'npx mjml';
         }
         $process = new Process('which mjml');
