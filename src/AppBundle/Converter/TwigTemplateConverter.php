@@ -212,11 +212,11 @@ $layoutStyles
         //if mj-section is inside mj-wrapper, we need to remove the conditional `if mso <table>`
         //if mj-section is not inside mj-wrapper, we need to remove the conditional `if mso <table>` and `if mso <tr><td>`
         $innerHtml = preg_replace('/^<!--\[if mso \| IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0">/', '<!--[if mso | IE]>', $innerHtml);
-        $innerHtml = preg_replace('/^<!--\[if mso \| IE]><!\[endif]-->/', '', $innerHtml);
-        $innerHtml = preg_replace('/<!--\[if mso \| IE]><\/table><!\[endif]-->$/', '', $innerHtml);
+        $innerHtml = preg_replace('/<\/table><!\[endif]-->$/', '<![endif]-->', $innerHtml);
+        $innerHtml = str_replace('<!--[if mso | IE]><![endif]-->', '', $innerHtml);
         if (!$isWrapped) {
-            $innerHtml = str_replace('<!--[if mso | IE]><tr><td class="" width="604px" >', '<!--[if mso | IE]>', $innerHtml);
-            $innerHtml = preg_replace("/(.*)<\/td><\/tr><!\[endif]-->/", '$1<![endif]-->', $innerHtml);
+            $innerHtml = preg_replace('/(<!--\[if mso \| IE]>)<tr><td[^>]*>/', '$1', $innerHtml, 1); // replace first
+            $innerHtml = preg_replace("/(.*)<\/td><\/tr><!\[endif]-->/", '$1<![endif]-->', $innerHtml); // replace last
         }
 
         //Each converted template has its own style rules, so we need to extract them as well
