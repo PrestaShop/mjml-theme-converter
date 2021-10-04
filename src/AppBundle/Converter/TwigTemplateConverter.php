@@ -220,9 +220,12 @@ $layoutStyles
         }
 
         //Each converted template has its own style rules, so we need to extract them as well
-        $templateStyles = $this->extractHtml($convertedTemplate, 'head style');
-        $templateStyles = trim($templateStyles)."\n";
-
+        $htmlHead = $this->extractHtml($convertedTemplate, 'head');
+        if (preg_match('#(<style.*</style>)#s', $htmlHead, $matches)) {
+            $templateStyles = trim($matches[1])."\n";
+        } else {
+            $templateStyles = '';
+        }
         return [
             'content' => $innerHtml,
             'styles' => $templateStyles,
