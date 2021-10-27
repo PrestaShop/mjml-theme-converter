@@ -60,11 +60,11 @@ class MjmlConverter
      * @throws InvalidArgumentException
      */
     public function __construct(
-        $useNpm = false,
         $applicationId = ',',
         $secretKey = '',
         $binaryMode = true,
-        $tempDir = ''
+        $tempDir = '',
+        $useNpm = false
     ) {
         if (!$binaryMode && (empty($applicationId) || empty($secretKey))) {
             throw new InvalidArgumentException('You need to enable at least one of binary or api mode');
@@ -138,7 +138,7 @@ class MjmlConverter
     /**
      * @return string
      */
-    private function getMjmlBinaryPath()
+    private function getMjmlBinaryPath(): string
     {
         if ($this->useNpm) {
             return 'npx mjml';

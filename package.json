@@ -1,7 +1,7 @@
 {
   "name": "mjml-theme-converter",
   "version": "1.0.0",
-  "description": "mjml-theme-converter ====================",
+  "description": "mjml-theme-converter",
   "main": "index.js",
   "directories": {
     "doc": "docs",

@@ -121,7 +121,7 @@ class TwigTemplateConverter
         return $html;
     }
 
-    public function convertComponentTemplate($mjmlTemplatePath, $mjmlTheme, $newTheme, $isWrapped)
+    public function convertComponentTemplate($mjmlTemplatePath, $mjmlTheme, $newTheme, bool $isWrapped)
     {
         if (!file_exists($mjmlTemplatePath)) {
             throw new FileNotFoundException(sprintf('Could not find mjml template %s', $mjmlTemplatePath));
@@ -187,7 +187,7 @@ $layoutStyles
      * @return array
      * @throws \Twig\Error\Error
      */
-    private function convertLayout($mjmlTheme, $newTheme, $isWrapped)
+    private function convertLayout($mjmlTheme, $newTheme, bool $isWrapped)
     {
         $convertedTemplate = $this->convertMjml($this->templateContent);
 
