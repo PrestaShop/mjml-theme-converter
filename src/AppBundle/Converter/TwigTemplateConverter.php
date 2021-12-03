@@ -104,10 +104,14 @@ class TwigTemplateConverter
         //Add the styles block in the header
         $dom = new DOMDocument();
         $dom->loadHTML($twigLayout);
-        $blockNode = $dom->createTextNode("    {% block styles %}\n    {% endblock %}\n");
+        $blockStyleStart = $dom->createTextNode("{% block styles %}\n  ");
+        $blockStyleEnd = $dom->createTextNode("  {% endblock %}\n");
         /** @var DOMElement $head */
         $head = $dom->getElementsByTagName('head')->item(0);
-        $head->appendChild($blockNode);
+        /** @var DOMElement $style First style tag in head */
+        $style = $head->getElementsByTagName('style')->item(0);
+        $head->insertBefore($blockStyleStart, $style);
+        $head->appendChild($blockStyleEnd);
 
         $html = $dom->saveHTML();
 
@@ -117,7 +121,7 @@ class TwigTemplateConverter
         return $html;
     }
 
-    public function convertComponentTemplate($mjmlTemplatePath, $mjmlTheme, $newTheme)
+    public function convertComponentTemplate($mjmlTemplatePath, $mjmlTheme, $newTheme, bool $isWrapped)
     {
         if (!file_exists($mjmlTemplatePath)) {
             throw new FileNotFoundException(sprintf('Could not find mjml template %s', $mjmlTemplatePath));
@@ -135,7 +139,7 @@ $this->templateContent
 {% block footer %}{% endblock %}
 ";
 
-        $convertedLayout = $this->convertLayout($mjmlTheme, $newTheme);
+        $convertedLayout = $this->convertLayout($mjmlTheme, $newTheme, $isWrapped);
 
         return $convertedLayout['content'];
     }
@@ -158,7 +162,7 @@ $this->templateContent
         $twigLayout = $this->convertTwigLayoutPath($mjmlLayout, $newTheme);
         $layoutTile = $this->getLayoutTitle();
 
-        $convertedLayout = $this->convertLayout($mjmlTheme, $newTheme);
+        $convertedLayout = $this->convertLayout($mjmlTheme, $newTheme, true);
         $layoutContent = $convertedLayout['content'];
         $layoutStyles = $convertedLayout['styles'];
 
@@ -171,7 +175,6 @@ $layoutContent
 {% endblock %}
 
 {% block styles %}
-{{ parent() }}
 $layoutStyles
 {% endblock %}
 ";
@@ -184,7 +187,7 @@ $layoutStyles
      * @return array
      * @throws \Twig\Error\Error
      */
-    private function convertLayout($mjmlTheme, $newTheme)
+    private function convertLayout($mjmlTheme, $newTheme, bool $isWrapped)
     {
         $convertedTemplate = $this->convertMjml($this->templateContent);
 
@@ -206,10 +209,23 @@ $layoutStyles
         //Update assets path
         $innerHtml = preg_replace('#'.$mjmlTheme.'/assets/#', $newTheme.'/assets/', $innerHtml);
 
-        //Each converted template has its own style rules, so we need to extract them as well
-        $templateStyles = $this->extractHtml($convertedTemplate, 'head style');
-        $templateStyles = trim($templateStyles)."\n";
+        //if mj-section is inside mj-wrapper, we need to remove the conditional `if mso <table>`
+        //if mj-section is not inside mj-wrapper, we need to remove the conditional `if mso <table>` and `if mso <tr><td>`
+        $innerHtml = preg_replace('/^<!--\[if mso \| IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0">/', '<!--[if mso | IE]>', $innerHtml);
+        $innerHtml = preg_replace('/<\/table><!\[endif]-->$/', '<![endif]-->', $innerHtml);
+        $innerHtml = str_replace('<!--[if mso | IE]><![endif]-->', '', $innerHtml);
+        if (!$isWrapped) {
+            $innerHtml = preg_replace('/(<!--\[if mso \| IE]>)<tr><td[^>]*>/', '$1', $innerHtml, 1); // replace first
+            $innerHtml = preg_replace("/(.*)<\/td><\/tr><!\[endif]-->/", '$1<![endif]-->', $innerHtml); // replace last
+        }
 
+        //Each converted template has its own style rules, so we need to extract them as well
+        $htmlHead = $this->extractHtml($convertedTemplate, 'head');
+        if (preg_match('#(<style.*</style>)#s', $htmlHead, $matches)) {
+            $templateStyles = trim($matches[1])."\n";
+        } else {
+            $templateStyles = '';
+        }
         return [
             'content' => $innerHtml,
             'styles' => $templateStyles,

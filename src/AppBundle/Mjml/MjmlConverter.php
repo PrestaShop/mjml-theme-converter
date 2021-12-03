@@ -48,7 +48,11 @@ class MjmlConverter
     /** @var Filesystem */
     private $fileSystem;
 
+    /** @var bool */
+    private $useNpm;
+
     /**
+     * @param bool $useNpm
      * @param string $applicationId
      * @param string $secretKey
      * @param bool $binaryMode
@@ -59,7 +63,8 @@ class MjmlConverter
         $applicationId = ',',
         $secretKey = '',
         $binaryMode = true,
-        $tempDir = ''
+        $tempDir = '',
+        $useNpm = false
     ) {
         if (!$binaryMode && (empty($applicationId) || empty($secretKey))) {
             throw new InvalidArgumentException('You need to enable at least one of binary or api mode');
@@ -70,6 +75,7 @@ class MjmlConverter
         $this->secretKey = $secretKey;
         $this->tempDir = empty($tempDir) ? sys_get_temp_dir().'/mjml' : $tempDir;
         $this->fileSystem = new Filesystem();
+        $this->useNpm = $useNpm;
     }
 
     public function convert($mjmlContent)
@@ -132,8 +138,11 @@ class MjmlConverter
     /**
      * @return string
      */
-    private function getMjmlBinaryPath()
+    private function getMjmlBinaryPath(): string
     {
+        if ($this->useNpm) {
+            return 'npx mjml';
+        }
         $process = new Process('which mjml');
         $process->run();
         if (!$process->isSuccessful()) {

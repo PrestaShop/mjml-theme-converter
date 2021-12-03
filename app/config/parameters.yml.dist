@@ -19,3 +19,4 @@ parameters:
     secret: ThisTokenIsNotSoSecretChangeIt
 
     mjml_mail_themes_dir: "%kernel.project_dir%/mails/themes"
+    mjml_use_npm: true

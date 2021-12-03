@@ -1,0 +1,26 @@
+{
+  "name": "mjml-theme-converter",
+  "version": "1.0.0",
+  "description": "mjml-theme-converter",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs",
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Prestashop/mjml-theme-converter.git"
+  },
+  "author": "",
+  "license": "OSL https://github.com/PrestaShop/mjml-theme-converter/blob/master/LICENSE.md",
+  "bugs": {
+    "url": "https://github.com/Prestashop/mjml-theme-converter/issues"
+  },
+  "homepage": "https://github.com/Prestashop/mjml-theme-converter#readme",
+  "dependencies": {
+    "mjml": "^4.10.3"
+  }
+}
