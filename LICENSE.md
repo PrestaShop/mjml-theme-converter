@@ -1,5 +1,5 @@
 
-Copyright (c) 2007-2019 PrestaShop.
+Copyright (c) since 2007 PrestaShop.
 
 mjml-theme-converter is licensed under OSL-3.0. Please read [/docs/licences/LICENSE.txt](/docs/licences/LICENSE.txt) for details.
 
