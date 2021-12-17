@@ -1,0 +1,22 @@
+
+div {
+    direction: rtl !important;
+    text-align: right !important;
+}
+
+.header td table {
+    margin: 0 auto;
+}
+
+.mj-column-px-25 {
+    float: right;
+}
+
+.footer div {
+    text-align: center !important;
+}
+
+.subtitle-icon {
+    margin-right: 0 !important;
+    margin-left: 10px;
+}
