@@ -113,6 +113,12 @@ class TwigTemplateConverter
         $head->insertBefore($blockStyleStart, $style);
         $head->appendChild($blockStyleEnd);
 
+        //Add inline CSS for RTL languages
+        $link = $dom->createTextNode("{% if languageIsRTL %}\n  ".
+            "<style type=\"text/css\">{% include '@MailThemes/modern/assets/rtl.css' %}</style>\n  ".
+            "{% endif %}\n  ");
+        $head->insertBefore($link, $blockStyleStart);
+        
         $html = $dom->saveHTML();
 
         // Since DOMDocument::saveHTML converts special characters into special HTML characters we revert them back
