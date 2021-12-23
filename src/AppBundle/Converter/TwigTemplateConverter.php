@@ -223,6 +223,7 @@ $layoutStyles
         $htmlHead = $this->extractHtml($convertedTemplate, 'head');
         if (preg_match('#(<style.*</style>)#s', $htmlHead, $matches)) {
             $templateStyles = trim($matches[1])."\n";
+            $templateStyles = preg_replace('/\s*<link[^>]*>/i', '', $templateStyles);
         } else {
             $templateStyles = '';
         }
