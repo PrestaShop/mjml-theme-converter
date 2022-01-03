@@ -114,6 +114,8 @@ class ConvertMJMLThemeCommand extends Command
                 $fileSystem->mkdir($twigTemplateFolder);
             }
 
+            $twigTemplate = $this->converter->convertRTL($twigTemplate);
+            
             file_put_contents($twigTemplatePath, $twigTemplate);
         }
 

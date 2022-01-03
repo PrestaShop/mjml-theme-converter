@@ -112,7 +112,19 @@ class TwigTemplateConverter
         $style = $head->getElementsByTagName('style')->item(0);
         $head->insertBefore($blockStyleStart, $style);
         $head->appendChild($blockStyleEnd);
-
+        
+        //Add RTL condition in twig layouts
+        $link = $dom->createTextNode(
+            "{% set direction = 'ltr' %}\n  ".
+            "{% set align_left = 'left' %}\n  ".
+            "{% set align_right = 'right' %}\n  ".
+            "{% if languageIsRTL|default(false) %}\n  ".
+            "{% set direction = 'rtl' %}\n  ".
+            "{% set align_left = 'right' %}\n  ".
+            "{% set align_right = 'left' %}\n  ".
+            "{% endif %}\n  ");
+        $head->insertBefore($link, $blockStyleStart);
+        
         $html = $dom->saveHTML();
 
         // Since DOMDocument::saveHTML converts special characters into special HTML characters we revert them back
@@ -178,6 +190,17 @@ $layoutContent
 $layoutStyles
 {% endblock %}
 ";
+    }
+
+    public function convertRTL($twigTemplate)
+    {
+        $twigTemplate = preg_replace('/direction:ltr/', 'direction:{{ direction }}', $twigTemplate);
+        $twigTemplate = preg_replace('/align="left"/', 'align="{{ align_left }}"', $twigTemplate);
+        $twigTemplate = preg_replace('/text-align:left/', 'text-align:{{ align_left }}', $twigTemplate);
+        $twigTemplate = preg_replace('/align="right"/', 'align="{{ align_right }}"', $twigTemplate);
+        $twigTemplate = preg_replace('/margin-right:/', 'margin-{{ align_right }}:', $twigTemplate);
+
+        return $twigTemplate;
     }
 
     /**
