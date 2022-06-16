@@ -117,6 +117,7 @@
           {total_discounts}
         </td>
       </tr>
+      <mj-addif condition="giftWrapping == 1">
       <tr class="order_summary">
         <td bgcolor="#FDFDFD" colspan="3" align="right">
           {{ 'Gift-wrapping'|trans({}, 'Emails.Body', locale)|raw }}
@@ -125,6 +126,7 @@
           {total_wrapping}
         </td>
       </tr>
+      </mj-addif>
       <tr class="order_summary">
         <td bgcolor="#FDFDFD" colspan="3" align="right">
           {{ 'Shipping'|trans({}, 'Emails.Body', locale)|raw }}
