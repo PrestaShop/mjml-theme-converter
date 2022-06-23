@@ -343,7 +343,7 @@ $layoutStyles
     {
         $htmlContent = $this->replaceContainerWithTwigCondition($htmlContent, 'html-only', 'html');
         $htmlContent = $this->replaceContainerWithTwigCondition($htmlContent, 'txt-only', 'txt');
-        $htmlContent = $this->replaceContainerWithTwigIfCondition($htmlContent, 'mj-addif');
+        $htmlContent = $this->replaceContainerWithTwigIfCondition($htmlContent, 'twig-if');
 
         //MJML returns a full html template, get only the body content
         $crawler = new Crawler($htmlContent);
