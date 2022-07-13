@@ -294,6 +294,44 @@ $layoutStyles
 
         return $filteredContent;
     }
+    
+    /**
+     * @param string $templateContent
+     * @param string $containerSelector
+     *
+     * @return string
+     */
+    private function replaceContainerWithTwigIfCondition($templateContent, string $containerSelector)
+    {
+        $crawler = new Crawler($templateContent);
+
+        $crawler->filter($containerSelector)->each(function (Crawler $crawler) {
+            foreach ($crawler as $node) {
+                $replaceNodes = [];
+                $replaceNodes[] = $node->ownerDocument->createTextNode(PHP_EOL .'{% if '. $node->attributes->getNamedItem('condition')->nodeValue .' %}' . PHP_EOL);
+                /** @var DOMElement $childNode */
+                foreach ($node->childNodes as $childNode) {
+                    $replaceNodes[] = $childNode->cloneNode(true);
+                }
+                $replaceNodes[] = $node->ownerDocument->createTextNode(PHP_EOL . '{% endif %}' . PHP_EOL);
+
+                foreach ($replaceNodes as $childNode) {
+                    $node->parentNode->insertBefore($childNode, $node);
+                }
+                $node->parentNode->removeChild($node);
+            }
+        });
+
+        $filteredContent = '';
+        foreach ($crawler as $domElement) {
+            $filteredContent .= $domElement->ownerDocument->saveHTML($domElement);
+        }
+
+        // Since DOMDocument::saveHTML converts special characters into special HTML characters we revert them back
+        $filteredContent = htmlspecialchars_decode($filteredContent);
+
+        return $filteredContent;
+    }
 
     /**
      * @param string $htmlContent
@@ -305,6 +343,7 @@ $layoutStyles
     {
         $htmlContent = $this->replaceContainerWithTwigCondition($htmlContent, 'html-only', 'html');
         $htmlContent = $this->replaceContainerWithTwigCondition($htmlContent, 'txt-only', 'txt');
+        $htmlContent = $this->replaceContainerWithTwigIfCondition($htmlContent, 'twig-if');
 
         //MJML returns a full html template, get only the body content
         $crawler = new Crawler($htmlContent);
