@@ -56,7 +56,7 @@
             {{ 'Congratulations, you are one of our best customers! However, it looks like you have not placed an order since {days_threshold} days.'|trans({}, 'Emails.Body', locale)|raw }}
         </mj-text>
         <mj-text padding-top="0px">
-            {{ 'Your cart has been saved, you can resume your order by visiting our shop:'|trans({}, 'Emails.Body', locale)|raw }} <a href="{shop_url}" target="_blank">{shop_url}</a>
+            {{ 'Your cart has been saved, you can resume your order by visiting our store:'|trans({}, 'Emails.Body', locale)|raw }} <a href="{shop_url}" target="_blank">{shop_url}</a>
         </mj-text>
         <mj-text padding-top="0px">
             {{ 'We are pleased to offer you a discount of [1]{amount}%[/1] off your next order. And this offer is valid for [1]{days}[/1] days, so do not wait any longer!'|trans({'[1]': '<span class="label">', '[/1]': '</span>'}, 'Emails.Body', locale)|raw }}
