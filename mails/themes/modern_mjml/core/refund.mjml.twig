@@ -60,7 +60,10 @@
 </mj-raw>
 <mj-section padding="0 25px 20px">
   <mj-column>
-    <mj-text>{{ 'Follow your order and download your invoice on our store, go to the <a href="{history_url}" target="_blank">%order_history_label%</a> section of your customer account.'|trans({'%order_history_label%': 'Order history and details'|trans({}, 'Shop.Theme.Customeraccount', locale)}, 'Emails.Body', locale)|raw }}</mj-text>
+    <mj-text>
+      <twig-if condition="psInvoice == 1">{{ 'Follow your order and download your invoice on our store, go to the <a href="{history_url}" target="_blank">%order_history_label%</a> section of your customer account.'|trans({'%order_history_label%': 'Order history and details'|trans({}, 'Shop.Theme.Customeraccount', locale)}, 'Emails.Body', locale)|raw }}</twig-if>
+      <twig-if condition="psInvoice == 0">{{ 'Follow your order on our store, go to the <a href="{history_url}" target="_blank">%order_history_label%</a> section of your customer account.'|trans({'%order_history_label%': 'Order history and details'|trans({}, 'Shop.Theme.Customeraccount', locale)}, 'Emails.Body', locale)|raw }}</twig-if>
+    </mj-text>
   </mj-column>
 </mj-section>
 <mj-raw>
